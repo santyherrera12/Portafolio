@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Santiago Herrera Tafur — Data & Systems Engineer</title>
+<title>Santiago Herrera Tafur — Data Engineer & Full Stack Developer</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -114,8 +114,8 @@
       <a href="#contact" class="btn btn-ghost">Contactar</a>
     </div>
     <div class="hero-stats">
-      <div><div class="stat-num">7+</div><div class="stat-label">Proyectos</div></div>
-      <div><div class="stat-num">12+</div><div class="stat-label">Tecnologías</div></div>
+      <div><div class="stat-num">15+</div><div class="stat-label">Proyectos</div></div>
+      <div><div class="stat-num">20+</div><div class="stat-label">Tecnologías</div></div>
       <div><div class="stat-num">3</div><div class="stat-label">Idiomas</div></div>
       <div><div class="stat-num">2</div><div class="stat-label">Titulaciones</div></div>
     </div>
@@ -139,17 +139,23 @@
       <div class="stack-item"><div class="stack-dot dot-green"></div>Python</div>
       <div class="stack-item"><div class="stack-dot dot-green"></div>Pandas</div>
       <div class="stack-item"><div class="stack-dot dot-green"></div>SQL</div>
+      <div class="stack-item"><div class="stack-dot dot-green"></div>PostgreSQL</div>
       <div class="stack-item"><div class="stack-dot dot-blue"></div>Google BigQuery</div>
       <div class="stack-item"><div class="stack-dot dot-blue"></div>AWS S3 / IAM</div>
       <div class="stack-item"><div class="stack-dot dot-yellow"></div>MongoDB</div>
       <div class="stack-item"><div class="stack-dot dot-yellow"></div>Cassandra</div>
       <div class="stack-item"><div class="stack-dot dot-purple"></div>Docker</div>
+      <div class="stack-item"><div class="stack-dot dot-purple"></div>Apache Kafka</div>
       <div class="stack-item"><div class="stack-dot dot-purple"></div>Git</div>
       <div class="stack-item"><div class="stack-dot dot-blue"></div>Power BI</div>
       <div class="stack-item"><div class="stack-dot dot-green"></div>Streamlit</div>
       <div class="stack-item"><div class="stack-dot dot-yellow"></div>Apache Spark</div>
       <div class="stack-item"><div class="stack-dot dot-purple"></div>FastAPI</div>
       <div class="stack-item"><div class="stack-dot dot-blue"></div>React</div>
+      <div class="stack-item"><div class="stack-dot dot-green"></div>Scikit-learn</div>
+      <div class="stack-item"><div class="stack-dot dot-yellow"></div>dbt</div>
+      <div class="stack-item"><div class="stack-dot dot-blue"></div>HTML / CSS</div>
+      <div class="stack-item"><div class="stack-dot dot-yellow"></div>JavaScript</div>
     </div>
   </div>
 </section>
@@ -160,6 +166,7 @@
     <h2 class="section-title">Proyectos</h2>
     <div class="projects-list">
 
+      <!-- TFM -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">Plataforma Analítica de Importaciones Petroleras — TFM</div>
@@ -171,6 +178,7 @@
         </div>
       </div>
 
+      <!-- ETL -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">ETL Pipeline con Python — Datos del Clima</div>
@@ -183,6 +191,7 @@
         <a href="https://github.com/santyherrera12/etl-pipeline" target="_blank" class="github-link">Ver codigo en GitHub →</a>
       </div>
 
+      <!-- BigQuery -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">Dashboard Analítico con BigQuery + Power BI</div>
@@ -195,18 +204,20 @@
         <a href="https://github.com/santyherrera12/dashboard-bigquery" target="_blank" class="github-link">Ver codigo en GitHub →</a>
       </div>
 
+      <!-- Streaming -->
       <div class="project-card">
         <div class="project-header">
-          <div class="project-title">Streaming Pipeline con Docker + MongoDB</div>
+          <div class="project-title">Streaming Pipeline con Docker + Kafka + MongoDB</div>
           <div class="project-status status-done">Completado</div>
         </div>
-        <p class="project-desc">Pipeline de datos en tiempo real usando Docker Compose. Generador de eventos, procesamiento Python y almacenamiento en MongoDB con índices optimizados. Arquitectura orientada a eventos con contenedores aislados.</p>
+        <p class="project-desc">Pipeline de datos en tiempo real usando Docker Compose. Producer Python genera transacciones de venta cada 2 segundos, las envía a Apache Kafka y un Consumer las persiste en MongoDB. Stack completo corriendo en contenedores aislados con más de 200 documentos procesados en prueba.</p>
         <div class="project-tags">
-          <span class="tag">Docker</span><span class="tag">Python</span><span class="tag">MongoDB</span><span class="tag purple">Streaming</span><span class="tag green">NoSQL</span>
+          <span class="tag">Docker</span><span class="tag">Apache Kafka</span><span class="tag">Python</span><span class="tag">MongoDB</span><span class="tag purple">Streaming</span><span class="tag green">NoSQL</span>
         </div>
         <a href="https://github.com/santyherrera12/streaming-pipeline" target="_blank" class="github-link">Ver codigo en GitHub →</a>
       </div>
 
+      <!-- Streamlit -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">App de Análisis de Datos con Streamlit</div>
@@ -219,9 +230,10 @@
         <a href="https://github.com/santyherrera12/dashboard-videojuegos" target="_blank" class="github-link">Ver codigo en GitHub →</a>
       </div>
 
+      <!-- API REST -->
       <div class="project-card">
         <div class="project-header">
-          <div class="project-title">API REST con Python + FastAPI</div>
+          <div class="project-title">API REST con FastAPI + PostgreSQL</div>
           <div class="project-status status-planned">Próximamente</div>
         </div>
         <p class="project-desc">Backend completo con FastAPI. Incluye autenticación JWT, endpoints CRUD, conexión a PostgreSQL con SQLAlchemy, documentación automática con Swagger y despliegue en Docker.</p>
@@ -230,14 +242,117 @@
         </div>
       </div>
 
+      <!-- SQL Avanzado -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Análisis Avanzado con SQL + PostgreSQL</div>
+          <div class="project-status status-planned">Próximamente</div>
+        </div>
+        <p class="project-desc">Proyecto enfocado en SQL de nivel profesional sobre PostgreSQL. Consultas complejas con JOINs múltiples, subqueries, CTEs, Window Functions (RANK, LAG, LEAD, PARTITION BY) y análisis de negocio sobre datasets reales. Todo documentado con resultados y explicaciones.</p>
+        <div class="project-tags">
+          <span class="tag">SQL</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span><span class="tag purple">Analytics</span><span class="tag green">Window Functions</span>
+        </div>
+      </div>
+
+      <!-- Web Scraping -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Web Scraping + Análisis Automatizado</div>
+          <div class="project-status status-planned">Próximamente</div>
+        </div>
+        <p class="project-desc">Pipeline automatizado de extracción de datos desde webs públicas usando BeautifulSoup y Selenium. Limpieza y análisis con Pandas, almacenamiento en base de datos y generación de reportes automáticos. Python avanzado aplicado a datos reales.</p>
+        <div class="project-tags">
+          <span class="tag">Python</span><span class="tag">BeautifulSoup</span><span class="tag">Selenium</span><span class="tag">Pandas</span><span class="tag purple">Automatización</span>
+        </div>
+      </div>
+
+      <!-- ML Pipeline -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Machine Learning Pipeline con Scikit-learn</div>
+          <div class="project-status status-planned">Próximamente</div>
+        </div>
+        <p class="project-desc">Pipeline completo de Machine Learning: ingesta de datos, preprocesamiento, entrenamiento de modelos de clasificación y regresión, evaluación con métricas, serialización con Joblib y API de predicción con FastAPI. Python aplicado a casos de negocio reales.</p>
+        <div class="project-tags">
+          <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Pandas</span><span class="tag">FastAPI</span><span class="tag purple">Machine Learning</span>
+        </div>
+      </div>
+
+      <!-- dbt -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Data Warehouse Moderno con dbt + PostgreSQL</div>
+          <div class="project-status status-planned">Próximamente</div>
+        </div>
+        <p class="project-desc">Construcción de un Data Warehouse siguiendo el patrón medallion (staging, intermediate, marts) usando dbt para transformaciones SQL versionadas. Modelos documentados, tests de calidad de datos y linaje visual. Estándar de la industria en empresas de datos.</p>
+        <div class="project-tags">
+          <span class="tag">dbt</span><span class="tag">SQL</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span><span class="tag purple">Data Warehouse</span>
+        </div>
+      </div>
+
+      <!-- Spark -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Procesamiento Masivo con Apache Spark</div>
+          <div class="project-status status-planned">Próximamente</div>
+        </div>
+        <p class="project-desc">Procesamiento distribuido de grandes volúmenes de datos con PySpark. Transformaciones sobre datasets de millones de registros, operaciones de agregación, joins distribuidos y escritura en formato Parquet. Big Data real corriendo en Docker.</p>
+        <div class="project-tags">
+          <span class="tag">PySpark</span><span class="tag">Python</span><span class="tag">Docker</span><span class="tag">Parquet</span><span class="tag purple">Big Data</span>
+        </div>
+      </div>
+
+      <!-- Full Stack -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">Aplicación Web Full Stack</div>
           <div class="project-status status-planned">Próximamente</div>
         </div>
-        <p class="project-desc">Aplicación completa con frontend en React y backend en FastAPI. Consume datos en tiempo real, incluye dashboard interactivo, autenticación de usuarios y diseño responsive.</p>
+        <p class="project-desc">Aplicación completa con frontend en React y backend en FastAPI. Consume datos en tiempo real, incluye dashboard interactivo, autenticación de usuarios y diseño responsive. Despliegue completo con Docker Compose.</p>
         <div class="project-tags">
-          <span class="tag">React</span><span class="tag">JavaScript</span><span class="tag">FastAPI</span><span class="tag">Python</span><span class="tag purple">Full Stack</span>
+          <span class="tag">React</span><span class="tag">JavaScript</span><span class="tag">FastAPI</span><span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag purple">Full Stack</span>
+        </div>
+      </div>
+
+      <!-- SEPARADOR DESARROLLO -->
+      <div style="margin-top:12px;margin-bottom:4px;">
+        <div class="section-label" style="margin-bottom:6px;">// desarrollo web</div>
+        <p style="font-size:0.78rem;color:var(--muted);">Ruta de aprendizaje Full Stack — desde fundamentos hasta aplicaciones completas.</p>
+      </div>
+
+      <!-- HTML + CSS -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Landing Page con HTML + CSS</div>
+          <div class="project-status status-planned">Próximamente</div>
+        </div>
+        <p class="project-desc">Primer proyecto de desarrollo web. Página de presentación con diseño responsive, animaciones CSS, variables de color y layout con Flexbox y Grid. Fundamentos sólidos de cómo funciona la web antes de usar frameworks.</p>
+        <div class="project-tags">
+          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Flexbox</span><span class="tag">Grid</span><span class="tag purple">Frontend</span>
+        </div>
+      </div>
+
+      <!-- JavaScript -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">App de Tareas con JavaScript Puro</div>
+          <div class="project-status status-planned">Próximamente</div>
+        </div>
+        <p class="project-desc">Aplicación interactiva construida sin frameworks. Manipulación del DOM, eventos, localStorage para persistencia y lógica de programación en el navegador. Base necesaria para entender React desde adentro.</p>
+        <div class="project-tags">
+          <span class="tag">JavaScript</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">DOM</span><span class="tag purple">Frontend</span>
+        </div>
+      </div>
+
+      <!-- React -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Dashboard Interactivo con React</div>
+          <div class="project-status status-planned">Próximamente</div>
+        </div>
+        <p class="project-desc">Primer proyecto con React. Componentes reutilizables, manejo de estado con hooks (useState, useEffect), consumo de APIs externas y diseño con Tailwind CSS. El framework frontend más demandado del mercado.</p>
+        <div class="project-tags">
+          <span class="tag">React</span><span class="tag">JavaScript</span><span class="tag">Tailwind CSS</span><span class="tag">Hooks</span><span class="tag purple">Frontend</span>
         </div>
       </div>
 
@@ -264,9 +379,10 @@
     <h2 class="section-title">Hablemos</h2>
     <p style="font-size:0.83rem;color:var(--muted);max-width:500px;margin-bottom:8px;">Abierto a oportunidades remotas o presenciales en Data Engineering, Análisis de Datos, Backend o Full Stack.</p>
     <div class="contact-links">
-      <a href="/cdn-cgi/l/email-protection#0a796b647e73626f78786f786b3b384a6d676b636624696567" class="contact-link"><span class="__cf_email__" data-cfemail="9deefcf3e9e4f5f8efeff8effcacafddfaf0fcf4f1b3fef2f0">[email&#160;protected]</span></a>
+      <a href="/cdn-cgi/l/email-protection#d7a4b6b9a3aebfb2a5a5b2a5b6e6e597b0bab6bebbf9b4b8ba" class="contact-link"><span class="__cf_email__" data-cfemail="c0b3a1aeb4b9a8a5b2b2a5b2a1f1f280a7ada1a9aceea3afad">[email&#160;protected]</span></a>
       <a href="https://www.linkedin.com/in/santiago-herrera-tafur-463887161" target="_blank" class="contact-link">LinkedIn</a>
       <a href="https://github.com/santyherrera12" target="_blank" class="contact-link">GitHub</a>
     </div>
   </div>
-</sectio
+</section>
+

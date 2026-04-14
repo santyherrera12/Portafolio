@@ -7,80 +7,129 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0b0e14; --surface: #111620; --border: #1e2535;
-    --accent: #00e5ff; --text: #cdd6f4; --muted: #6c7a99;
+    --bg: #080b10; --surface: #0f1420; --surface2: #141927; --border: #1a2236;
+    --accent: #00e5ff; --text: #cdd6f4; --muted: #5a6a88;
     --green: #a6e3a1; --yellow: #f9e2af;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { font-family: 'IBM Plex Mono', monospace; background: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden; }
-  body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; z-index: 0; }
-  .container { max-width: 900px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 0; background: rgba(11,14,20,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
-  nav .inner { max-width: 900px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
-  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem; color: var(--accent); }
-  .nav-logo span { color: var(--text); }
-  nav ul { list-style: none; display: flex; gap: 28px; }
-  nav a { color: var(--muted); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: linear-gradient(rgba(0,229,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.025) 1px, transparent 1px);
+    background-size: 44px 44px; pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: ''; position: fixed; top: -200px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 400px;
+    background: radial-gradient(ellipse, rgba(0,229,255,0.06) 0%, transparent 70%);
+    pointer-events: none; z-index: 0;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 14px 0; background: rgba(8,11,16,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+  nav .inner { max-width: 920px; margin: 0 auto; padding: 0 28px; display: flex; justify-content: space-between; align-items: center; }
+  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 0.95rem; color: var(--accent); letter-spacing: -0.5px; }
+  .nav-logo span { color: var(--muted); }
+  nav ul { list-style: none; display: flex; gap: 32px; }
+  nav a { color: var(--muted); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
   nav a:hover { color: var(--accent); }
-  .hero { min-height: 100vh; display: flex; align-items: center; padding: 100px 0 60px; }
-  .hero-tag { display: inline-block; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(0,229,255,0.3); padding: 4px 12px; border-radius: 2px; margin-bottom: 28px; }
-  .hero h1 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(2.6rem, 6.5vw, 4.8rem); line-height: 1.05; letter-spacing: -2px; margin-bottom: 20px; }
-  .hero h1 .name { color: #fff; }
-  .hero h1 .role { color: transparent; -webkit-text-stroke: 1px var(--accent); }
-  .hero-desc { font-size: 0.88rem; color: var(--muted); max-width: 540px; margin-bottom: 36px; line-height: 1.85; }
-  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
-  .btn { font-family: 'IBM Plex Mono', monospace; font-size: 0.76rem; letter-spacing: 0.08em; padding: 12px 24px; border-radius: 3px; cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px; font-size: 0.67rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--accent); border: 1px solid rgba(0,229,255,0.25);
+    padding: 5px 14px; border-radius: 2px; margin-bottom: 32px; background: rgba(0,229,255,0.04);
+  }
+  .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .hero h1 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(2.8rem, 7vw, 5.2rem); line-height: 1.03; letter-spacing: -2.5px; margin-bottom: 24px; }
+  .hero h1 .name { color: #fff; display: block; }
+  .hero h1 .role { color: transparent; -webkit-text-stroke: 1px var(--accent); display: block; }
+  .hero-desc { font-size: 0.87rem; color: var(--muted); max-width: 520px; margin-bottom: 40px; line-height: 1.9; }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { font-family: 'IBM Plex Mono', monospace; font-size: 0.74rem; letter-spacing: 0.08em; padding: 11px 22px; border-radius: 3px; cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; }
   .btn-primary { background: var(--accent); color: #000; border: 1px solid var(--accent); font-weight: 600; }
   .btn-primary:hover { background: transparent; color: var(--accent); }
   .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
-  .hero-stats { display: flex; gap: 40px; margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); flex-wrap: wrap; }
-  .stat-num { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; color: #fff; }
-  .stat-label { font-size: 0.68rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; }
-  section { padding: 80px 0; border-top: 1px solid var(--border); }
-  .section-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
-  .section-title { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 40px; letter-spacing: -0.5px; }
-  .stack-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 12px; }
-  .stack-item { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 14px 16px; display: flex; align-items: center; gap: 10px; font-size: 0.78rem; transition: all 0.2s; }
-  .stack-item:hover { border-color: var(--accent); background: rgba(0,229,255,0.05); transform: translateY(-2px); }
-  .stack-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .hero-stats { display: flex; gap: 48px; margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+  .stat-num { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: #fff; line-height: 1; }
+  .stat-label { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 4px; }
+
+  /* SECTIONS */
+  section { padding: 90px 0; border-top: 1px solid var(--border); }
+  .section-label { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+  .section-title { font-family: 'Syne', sans-serif; font-size: 2.1rem; font-weight: 800; color: #fff; margin-bottom: 44px; letter-spacing: -0.5px; }
+
+  /* STACK */
+  .stack-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); gap: 10px; }
+  .stack-item { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 13px 15px; display: flex; align-items: center; gap: 10px; font-size: 0.76rem; transition: all 0.2s; color: var(--text); }
+  .stack-item:hover { border-color: rgba(0,229,255,0.35); background: rgba(0,229,255,0.04); transform: translateY(-2px); color: #fff; }
+  .stack-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
   .dot-green { background: var(--green); } .dot-yellow { background: var(--yellow); } .dot-blue { background: var(--accent); } .dot-purple { background: #a78bfa; }
-  .projects-list { display: flex; flex-direction: column; gap: 20px; }
-  .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 28px; transition: all 0.25s; position: relative; overflow: hidden; }
-  .project-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--accent); transform: scaleY(0); transition: transform 0.25s; transform-origin: bottom; }
-  .project-card:hover { border-color: rgba(0,229,255,0.3); transform: translateX(4px); }
+
+  /* TERMINAL */
+  .terminal { background: #060910; border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; margin-bottom: 40px; font-size: 0.77rem; box-shadow: 0 4px 24px rgba(0,0,0,0.4); }
+  .terminal-bar { display: flex; gap: 7px; margin-bottom: 16px; align-items: center; }
+  .tdot { width: 11px; height: 11px; border-radius: 50%; }
+  .tdot-r { background: #ff5f57; } .tdot-y { background: #febc2e; } .tdot-g { background: #28c840; }
+  .terminal-title { font-size: 0.65rem; color: var(--muted); margin-left: auto; letter-spacing: 0.08em; }
+  .terminal-line { color: var(--muted); line-height: 2.2; }
+  .terminal-line .prompt { color: var(--green); } .terminal-line .cmd { color: #fff; } .terminal-line .out { color: var(--accent); }
+
+  /* PROJECTS */
+  .projects-list { display: flex; flex-direction: column; gap: 14px; }
+  .section-divider { display: flex; align-items: center; gap: 16px; margin: 28px 0 8px; }
+  .section-divider .div-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); white-space: nowrap; }
+  .section-divider .div-line { flex: 1; height: 1px; background: var(--border); }
+  .section-divider .div-desc { font-size: 0.72rem; color: var(--muted); white-space: nowrap; }
+  .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 26px 28px; transition: all 0.25s; position: relative; overflow: hidden; }
+  .project-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: linear-gradient(180deg, var(--accent), #7c3aed); transform: scaleY(0); transition: transform 0.3s; transform-origin: bottom; }
+  .project-card:hover { border-color: rgba(0,229,255,0.2); transform: translateX(5px); background: var(--surface2); }
   .project-card:hover::before { transform: scaleY(1); }
   .project-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 10px; }
-  .project-title { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; color: #fff; }
-  .project-status { font-size: 0.63rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; border-radius: 2px; flex-shrink: 0; }
-  .status-wip { color: var(--yellow); background: rgba(249,226,175,0.1); border: 1px solid rgba(249,226,175,0.2); }
-  .status-planned { color: var(--muted); background: rgba(108,122,153,0.1); border: 1px solid rgba(108,122,153,0.2); }
-  .status-done { color: var(--green); background: rgba(166,227,161,0.1); border: 1px solid rgba(166,227,161,0.2); }
-  .project-desc { font-size: 0.81rem; color: var(--muted); margin-bottom: 16px; line-height: 1.75; }
-  .project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-  .tag { font-size: 0.67rem; color: var(--accent); background: rgba(0,229,255,0.07); border: 1px solid rgba(0,229,255,0.15); padding: 3px 10px; border-radius: 2px; }
-  .tag.purple { color: #a78bfa; background: rgba(167,139,250,0.07); border-color: rgba(167,139,250,0.15); }
-  .tag.green { color: var(--green); background: rgba(166,227,161,0.07); border-color: rgba(166,227,161,0.15); }
-  .github-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-size: 0.75rem; color: var(--accent); text-decoration: none; border: 1px solid rgba(0,229,255,0.2); padding: 6px 14px; border-radius: 3px; transition: all 0.2s; font-family: 'IBM Plex Mono', monospace; }
-  .github-link:hover { background: rgba(0,229,255,0.07); }
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .about-card { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 24px; }
-  .about-card h3 { font-family: 'Syne', sans-serif; font-size: 0.95rem; color: #fff; margin-bottom: 10px; }
-  .about-card p { font-size: 0.79rem; color: var(--muted); line-height: 1.85; }
-  .terminal { background: #0d1117; border: 1px solid var(--border); border-radius: 6px; padding: 20px 24px; margin-bottom: 36px; font-size: 0.78rem; }
-  .terminal-bar { display: flex; gap: 6px; margin-bottom: 14px; }
-  .tdot { width: 10px; height: 10px; border-radius: 50%; }
-  .tdot-r { background: #ff5f57; } .tdot-y { background: #febc2e; } .tdot-g { background: #28c840; }
-  .terminal-line { color: var(--muted); line-height: 2.1; }
-  .terminal-line .prompt { color: var(--green); } .terminal-line .cmd { color: #fff; } .terminal-line .out { color: var(--accent); }
-  .contact-links { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 20px; }
-  .contact-link { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; color: var(--muted); text-decoration: none; padding: 10px 18px; border: 1px solid var(--border); border-radius: 3px; transition: all 0.2s; }
-  .contact-link:hover { color: var(--accent); border-color: var(--accent); background: rgba(0,229,255,0.05); }
-  footer { border-top: 1px solid var(--border); padding: 32px 0; text-align: center; font-size: 0.7rem; color: var(--muted); }
-  .cursor { display: inline-block; width: 2px; height: 1em; background: var(--accent); margin-left: 4px; vertical-align: text-bottom; animation: blink 1s step-end infinite; }
+  .project-title { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: #fff; }
+  .project-status { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; flex-shrink: 0; }
+  .status-wip { color: var(--yellow); background: rgba(249,226,175,0.08); border: 1px solid rgba(249,226,175,0.2); }
+  .status-planned { color: var(--muted); background: rgba(90,106,136,0.1); border: 1px solid rgba(90,106,136,0.2); }
+  .status-done { color: var(--green); background: rgba(166,227,161,0.08); border: 1px solid rgba(166,227,161,0.2); }
+  .project-desc { font-size: 0.8rem; color: var(--muted); margin-bottom: 16px; line-height: 1.8; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+  .tag { font-size: 0.64rem; color: var(--accent); background: rgba(0,229,255,0.06); border: 1px solid rgba(0,229,255,0.13); padding: 3px 10px; border-radius: 2px; }
+  .tag.purple { color: #a78bfa; background: rgba(167,139,250,0.06); border-color: rgba(167,139,250,0.15); }
+  .tag.green { color: var(--green); background: rgba(166,227,161,0.06); border-color: rgba(166,227,161,0.15); }
+  .project-links { display: flex; gap: 10px; margin-top: 16px; }
+  .github-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.72rem; color: var(--accent); text-decoration: none; border: 1px solid rgba(0,229,255,0.18); padding: 6px 14px; border-radius: 3px; transition: all 0.2s; font-family: 'IBM Plex Mono', monospace; background: rgba(0,229,255,0.03); }
+  .github-link:hover { background: rgba(0,229,255,0.08); border-color: rgba(0,229,255,0.4); }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .about-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 24px; transition: border-color 0.2s; }
+  .about-card:hover { border-color: rgba(0,229,255,0.2); }
+  .about-card h3 { font-family: 'Syne', sans-serif; font-size: 0.82rem; color: var(--accent); margin-bottom: 10px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .about-card p { font-size: 0.78rem; color: var(--muted); line-height: 1.85; }
+
+  /* CONTACT */
+  .contact-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+  .contact-link { display: flex; align-items: center; gap: 8px; font-size: 0.76rem; color: var(--muted); text-decoration: none; padding: 10px 20px; border: 1px solid var(--border); border-radius: 4px; transition: all 0.2s; background: var(--surface); }
+  .contact-link:hover { color: var(--accent); border-color: rgba(0,229,255,0.35); background: rgba(0,229,255,0.04); }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); padding: 36px 0; text-align: center; font-size: 0.68rem; color: var(--muted); }
+  footer span { color: var(--accent); }
+
+  .cursor { display: inline-block; width: 2px; height: 0.9em; background: var(--accent); margin-left: 3px; vertical-align: text-bottom; animation: blink 1s step-end infinite; }
   @keyframes blink { 50% { opacity: 0; } }
-  @media (max-width: 600px) { .about-grid { grid-template-columns: 1fr; } nav ul { display: none; } .hero-stats { gap: 24px; } }
+
+  @media (max-width: 600px) {
+    .about-grid { grid-template-columns: 1fr; }
+    nav ul { display: none; }
+    .hero-stats { gap: 28px; }
+    .section-divider .div-desc { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -99,22 +148,22 @@
 
 <section class="hero">
   <div class="container">
-    <div class="hero-tag">// disponible para oportunidades remotas y presenciales</div>
+    <div class="hero-tag">disponible para oportunidades remotas y presenciales</div>
     <h1>
-      <span class="name">Santiago<br>Herrera Tafur<br></span>
-      <span class="role">Data &amp; Systems</span>
+      <span class="name">Santiago<br>Herrera Tafur</span>
+      <span class="role">Data &amp; Full Stack</span>
     </h1>
     <p class="hero-desc">
-      Ingeniero de Sistemas · Máster en Big Data (Universidad Europea de Madrid) · 
-      Construyo pipelines de datos, aplicaciones web y plataformas analíticas 
-      — desde el backend hasta el dashboard final.<span class="cursor"></span>
+      Ingeniero de Sistemas · Máster en Big Data — Universidad Europea de Madrid.<br>
+      Construyo pipelines de datos, APIs y plataformas analíticas completas
+      — desde la ingesta hasta el dashboard final.<span class="cursor"></span>
     </p>
     <div class="hero-ctas">
       <a href="#projects" class="btn btn-primary">Ver proyectos →</a>
       <a href="#contact" class="btn btn-ghost">Contactar</a>
     </div>
     <div class="hero-stats">
-      <div><div class="stat-num">15+</div><div class="stat-label">Proyectos</div></div>
+      <div><div class="stat-num">5</div><div class="stat-label">Proyectos completados</div></div>
       <div><div class="stat-num">20+</div><div class="stat-label">Tecnologías</div></div>
       <div><div class="stat-num">3</div><div class="stat-label">Idiomas</div></div>
       <div><div class="stat-num">2</div><div class="stat-label">Titulaciones</div></div>
@@ -129,33 +178,36 @@
     <div class="terminal">
       <div class="terminal-bar">
         <div class="tdot tdot-r"></div><div class="tdot tdot-y"></div><div class="tdot tdot-g"></div>
+        <span class="terminal-title">santiago@dev ~ zsh</span>
       </div>
-      <div class="terminal-line"><span class="prompt">santiago@dev:~$</span> <span class="cmd">python --version</span></div>
+      <div class="terminal-line"><span class="prompt">❯</span> <span class="cmd">python --version</span></div>
       <div class="terminal-line"><span class="out">Python 3.13.7</span></div>
-      <div class="terminal-line"><span class="prompt">santiago@dev:~$</span> <span class="cmd">git log --oneline -2</span></div>
-      <div class="terminal-line"><span class="out">116d6d1 feat: ETL pipeline clima con Python · TFM architecture</span></div>
+      <div class="terminal-line"><span class="prompt">❯</span> <span class="cmd">docker ps --format "{{.Names}}"</span></div>
+      <div class="terminal-line"><span class="out">postgres_api &nbsp;&nbsp; kafka &nbsp;&nbsp; mongodb &nbsp;&nbsp; zookeeper</span></div>
+      <div class="terminal-line"><span class="prompt">❯</span> <span class="cmd">git log --oneline -1</span></div>
+      <div class="terminal-line"><span class="out">1ade5b1 API REST con FastAPI, PostgreSQL y Docker</span></div>
     </div>
     <div class="stack-grid">
       <div class="stack-item"><div class="stack-dot dot-green"></div>Python</div>
       <div class="stack-item"><div class="stack-dot dot-green"></div>Pandas</div>
-      <div class="stack-item"><div class="stack-dot dot-green"></div>SQL</div>
-      <div class="stack-item"><div class="stack-dot dot-green"></div>PostgreSQL</div>
+      <div class="stack-item"><div class="stack-dot dot-green"></div>FastAPI</div>
+      <div class="stack-item"><div class="stack-dot dot-green"></div>Streamlit</div>
+      <div class="stack-item"><div class="stack-dot dot-green"></div>Scikit-learn</div>
+      <div class="stack-item"><div class="stack-dot dot-blue"></div>SQL</div>
+      <div class="stack-item"><div class="stack-dot dot-blue"></div>PostgreSQL</div>
       <div class="stack-item"><div class="stack-dot dot-blue"></div>Google BigQuery</div>
       <div class="stack-item"><div class="stack-dot dot-blue"></div>AWS S3 / IAM</div>
+      <div class="stack-item"><div class="stack-dot dot-blue"></div>Power BI</div>
       <div class="stack-item"><div class="stack-dot dot-yellow"></div>MongoDB</div>
       <div class="stack-item"><div class="stack-dot dot-yellow"></div>Cassandra</div>
+      <div class="stack-item"><div class="stack-dot dot-yellow"></div>Apache Spark</div>
+      <div class="stack-item"><div class="stack-dot dot-yellow"></div>dbt</div>
       <div class="stack-item"><div class="stack-dot dot-purple"></div>Docker</div>
       <div class="stack-item"><div class="stack-dot dot-purple"></div>Apache Kafka</div>
       <div class="stack-item"><div class="stack-dot dot-purple"></div>Git</div>
-      <div class="stack-item"><div class="stack-dot dot-blue"></div>Power BI</div>
-      <div class="stack-item"><div class="stack-dot dot-green"></div>Streamlit</div>
-      <div class="stack-item"><div class="stack-dot dot-yellow"></div>Apache Spark</div>
-      <div class="stack-item"><div class="stack-dot dot-purple"></div>FastAPI</div>
-      <div class="stack-item"><div class="stack-dot dot-blue"></div>React</div>
-      <div class="stack-item"><div class="stack-dot dot-green"></div>Scikit-learn</div>
-      <div class="stack-item"><div class="stack-dot dot-yellow"></div>dbt</div>
-      <div class="stack-item"><div class="stack-dot dot-blue"></div>HTML / CSS</div>
-      <div class="stack-item"><div class="stack-dot dot-yellow"></div>JavaScript</div>
+      <div class="stack-item"><div class="stack-dot dot-purple"></div>React</div>
+      <div class="stack-item"><div class="stack-dot dot-purple"></div>HTML / CSS</div>
+      <div class="stack-item"><div class="stack-dot dot-purple"></div>JavaScript</div>
     </div>
   </div>
 </section>
@@ -166,193 +218,185 @@
     <h2 class="section-title">Proyectos</h2>
     <div class="projects-list">
 
-      <!-- TFM -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">Plataforma Analítica de Importaciones Petroleras — TFM</div>
           <div class="project-status status-wip">En progreso</div>
         </div>
-        <p class="project-desc">Arquitectura segura on-premise con modelo Bronze/Silver/Gold Data Lake para análisis de importaciones de petróleo en España (2003–2025). Dataset CNMC con más de 3.800 registros. Incluye modelos predictivos con Prophet y ARIMA, pipeline de transformación en Python y dashboard ejecutivo en Power BI.</p>
+        <p class="project-desc">Arquitectura segura on-premise con modelo Bronze/Silver/Gold Data Lake para análisis de importaciones de petróleo en España (2003–2025). Dataset CNMC con más de 3.800 registros. Modelos predictivos con Prophet y ARIMA, pipeline en Python y dashboard ejecutivo en Power BI.</p>
         <div class="project-tags">
           <span class="tag">Python</span><span class="tag">AWS S3</span><span class="tag">Power BI</span><span class="tag">Prophet</span><span class="tag">ARIMA</span><span class="tag purple">Data Lake</span><span class="tag green">Big Data</span>
         </div>
       </div>
 
-      <!-- ETL -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">ETL Pipeline con Python — Datos del Clima</div>
           <div class="project-status status-done">Completado</div>
         </div>
-        <p class="project-desc">Pipeline ETL completo que extrae datos del clima en tiempo real desde la API de OpenWeatherMap, los transforma con Pandas y los carga en un CSV histórico. Arquitectura modular con archivos separados para Extract, Transform y Load. Manejo seguro de credenciales con python-dotenv.</p>
+        <p class="project-desc">Pipeline ETL completo que extrae datos del clima en tiempo real desde la API de OpenWeatherMap, los transforma con Pandas y los carga en un CSV histórico. Arquitectura modular con archivos separados para Extract, Transform y Load.</p>
         <div class="project-tags">
-          <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">REST API</span><span class="tag">python-dotenv</span><span class="tag purple">ETL</span><span class="tag green">En produccion</span>
+          <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">REST API</span><span class="tag">python-dotenv</span><span class="tag purple">ETL</span><span class="tag green">En producción</span>
         </div>
-        <a href="https://github.com/santyherrera12/etl-pipeline" target="_blank" class="github-link">Ver codigo en GitHub →</a>
+        <div class="project-links"><a href="https://github.com/santyherrera12/etl-pipeline" target="_blank" class="github-link">↗ Ver en GitHub</a></div>
       </div>
 
-      <!-- BigQuery -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">Dashboard Analítico con BigQuery + Power BI</div>
           <div class="project-status status-done">Completado</div>
         </div>
-        <p class="project-desc">Dataset de ventas de videojuegos cargado en Google BigQuery. Queries SQL analíticas para responder preguntas de negocio: top juegos, ventas por género, por publisher y por región. Dashboard ejecutivo conectado directamente a BigQuery con 5 visualizaciones interactivas.</p>
+        <p class="project-desc">Dataset de ventas de videojuegos cargado en Google BigQuery. Queries SQL analíticas para responder preguntas de negocio: top juegos, ventas por género, publisher y región. Dashboard ejecutivo conectado directamente a BigQuery con 5 visualizaciones interactivas.</p>
         <div class="project-tags">
-          <span class="tag">BigQuery</span><span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag purple">Cloud Analytics</span><span class="tag green">En produccion</span>
+          <span class="tag">BigQuery</span><span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag purple">Cloud Analytics</span><span class="tag green">En producción</span>
         </div>
-        <a href="https://github.com/santyherrera12/dashboard-bigquery" target="_blank" class="github-link">Ver codigo en GitHub →</a>
+        <div class="project-links"><a href="https://github.com/santyherrera12/dashboard-bigquery" target="_blank" class="github-link">↗ Ver en GitHub</a></div>
       </div>
 
-      <!-- Streaming -->
       <div class="project-card">
         <div class="project-header">
-          <div class="project-title">Streaming Pipeline con Docker + Kafka + MongoDB</div>
+          <div class="project-title">Streaming Pipeline — Docker + Kafka + MongoDB</div>
           <div class="project-status status-done">Completado</div>
         </div>
-        <p class="project-desc">Pipeline de datos en tiempo real usando Docker Compose. Producer Python genera transacciones de venta cada 2 segundos, las envía a Apache Kafka y un Consumer las persiste en MongoDB. Stack completo corriendo en contenedores aislados con más de 200 documentos procesados en prueba.</p>
+        <p class="project-desc">Pipeline de datos en tiempo real con Docker Compose. Producer Python genera transacciones de venta cada 2 segundos, las envía a Apache Kafka y un Consumer las persiste en MongoDB. Más de 200 documentos procesados en prueba.</p>
         <div class="project-tags">
           <span class="tag">Docker</span><span class="tag">Apache Kafka</span><span class="tag">Python</span><span class="tag">MongoDB</span><span class="tag purple">Streaming</span><span class="tag green">NoSQL</span>
         </div>
-        <a href="https://github.com/santyherrera12/streaming-pipeline" target="_blank" class="github-link">Ver codigo en GitHub →</a>
+        <div class="project-links"><a href="https://github.com/santyherrera12/streaming-pipeline" target="_blank" class="github-link">↗ Ver en GitHub</a></div>
       </div>
 
-      <!-- Streamlit -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">App de Análisis de Datos con Streamlit</div>
           <div class="project-status status-done">Completado</div>
         </div>
-        <p class="project-desc">Aplicación web interactiva de análisis de ventas de videojuegos. Incluye sidebar con filtros dinámicos por plataforma, género y año, 4 KPIs en tiempo real, y 3 gráficos interactivos con Plotly: top publishers, ventas por región y evolución temporal.</p>
+        <p class="project-desc">Aplicación web interactiva de análisis de ventas de videojuegos. Sidebar con filtros dinámicos por plataforma, género y año, 4 KPIs en tiempo real y 3 gráficos interactivos con Plotly: top publishers, ventas por región y evolución temporal.</p>
         <div class="project-tags">
-          <span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">Plotly</span><span class="tag">Pandas</span><span class="tag purple">Data Viz</span><span class="tag green">En produccion</span>
+          <span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">Plotly</span><span class="tag">Pandas</span><span class="tag purple">Data Viz</span><span class="tag green">En producción</span>
         </div>
-        <a href="https://github.com/santyherrera12/dashboard-videojuegos" target="_blank" class="github-link">Ver codigo en GitHub →</a>
+        <div class="project-links"><a href="https://github.com/santyherrera12/dashboard-videojuegos" target="_blank" class="github-link">↗ Ver en GitHub</a></div>
       </div>
 
-      <!-- API REST -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">API REST con FastAPI + PostgreSQL</div>
-          <div class="project-status status-planned">Próximamente</div>
+          <div class="project-status status-done">Completado</div>
         </div>
-        <p class="project-desc">Backend completo con FastAPI. Incluye autenticación JWT, endpoints CRUD, conexión a PostgreSQL con SQLAlchemy, documentación automática con Swagger y despliegue en Docker.</p>
+        <p class="project-desc">Backend completo con arquitectura en capas. Endpoints CRUD, validación de datos con Pydantic, ORM con SQLAlchemy, base de datos PostgreSQL en Docker y documentación automática con Swagger UI.</p>
         <div class="project-tags">
-          <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span><span class="tag purple">Backend</span>
+          <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">SQLAlchemy</span><span class="tag">Docker</span><span class="tag purple">Backend</span>
         </div>
+        <div class="project-links"><a href="https://github.com/santyherrera12/api-productos" target="_blank" class="github-link">↗ Ver en GitHub</a></div>
       </div>
 
-      <!-- SQL Avanzado -->
+      <div class="section-divider">
+        <span class="div-label">// data engineering avanzado</span>
+        <div class="div-line"></div>
+        <span class="div-desc">próximos proyectos</span>
+      </div>
+
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">Análisis Avanzado con SQL + PostgreSQL</div>
           <div class="project-status status-planned">Próximamente</div>
         </div>
-        <p class="project-desc">Proyecto enfocado en SQL de nivel profesional sobre PostgreSQL. Consultas complejas con JOINs múltiples, subqueries, CTEs, Window Functions (RANK, LAG, LEAD, PARTITION BY) y análisis de negocio sobre datasets reales. Todo documentado con resultados y explicaciones.</p>
+        <p class="project-desc">SQL de nivel profesional sobre PostgreSQL. JOINs múltiples, subqueries, CTEs, Window Functions (RANK, LAG, LEAD, PARTITION BY) y análisis de negocio sobre datasets reales.</p>
         <div class="project-tags">
           <span class="tag">SQL</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span><span class="tag purple">Analytics</span><span class="tag green">Window Functions</span>
         </div>
       </div>
 
-      <!-- Web Scraping -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">Web Scraping + Análisis Automatizado</div>
           <div class="project-status status-planned">Próximamente</div>
         </div>
-        <p class="project-desc">Pipeline automatizado de extracción de datos desde webs públicas usando BeautifulSoup y Selenium. Limpieza y análisis con Pandas, almacenamiento en base de datos y generación de reportes automáticos. Python avanzado aplicado a datos reales.</p>
+        <p class="project-desc">Pipeline automatizado de extracción de datos desde webs públicas con BeautifulSoup y Selenium. Limpieza con Pandas, almacenamiento en base de datos y reportes automáticos.</p>
         <div class="project-tags">
           <span class="tag">Python</span><span class="tag">BeautifulSoup</span><span class="tag">Selenium</span><span class="tag">Pandas</span><span class="tag purple">Automatización</span>
         </div>
       </div>
 
-      <!-- ML Pipeline -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">Machine Learning Pipeline con Scikit-learn</div>
           <div class="project-status status-planned">Próximamente</div>
         </div>
-        <p class="project-desc">Pipeline completo de Machine Learning: ingesta de datos, preprocesamiento, entrenamiento de modelos de clasificación y regresión, evaluación con métricas, serialización con Joblib y API de predicción con FastAPI. Python aplicado a casos de negocio reales.</p>
+        <p class="project-desc">Pipeline completo de ML: ingesta, preprocesamiento, entrenamiento de modelos de clasificación y regresión, evaluación con métricas, serialización con Joblib y API de predicción con FastAPI.</p>
         <div class="project-tags">
           <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Pandas</span><span class="tag">FastAPI</span><span class="tag purple">Machine Learning</span>
         </div>
       </div>
 
-      <!-- dbt -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">Data Warehouse Moderno con dbt + PostgreSQL</div>
           <div class="project-status status-planned">Próximamente</div>
         </div>
-        <p class="project-desc">Construcción de un Data Warehouse siguiendo el patrón medallion (staging, intermediate, marts) usando dbt para transformaciones SQL versionadas. Modelos documentados, tests de calidad de datos y linaje visual. Estándar de la industria en empresas de datos.</p>
+        <p class="project-desc">Data Warehouse con patrón medallion (staging → intermediate → marts) usando dbt para transformaciones SQL versionadas. Modelos documentados, tests de calidad y linaje visual.</p>
         <div class="project-tags">
           <span class="tag">dbt</span><span class="tag">SQL</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span><span class="tag purple">Data Warehouse</span>
         </div>
       </div>
 
-      <!-- Spark -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">Procesamiento Masivo con Apache Spark</div>
           <div class="project-status status-planned">Próximamente</div>
         </div>
-        <p class="project-desc">Procesamiento distribuido de grandes volúmenes de datos con PySpark. Transformaciones sobre datasets de millones de registros, operaciones de agregación, joins distribuidos y escritura en formato Parquet. Big Data real corriendo en Docker.</p>
+        <p class="project-desc">Procesamiento distribuido con PySpark sobre datasets de millones de registros. Agregaciones, joins distribuidos y escritura en formato Parquet corriendo en Docker.</p>
         <div class="project-tags">
           <span class="tag">PySpark</span><span class="tag">Python</span><span class="tag">Docker</span><span class="tag">Parquet</span><span class="tag purple">Big Data</span>
         </div>
       </div>
 
-      <!-- Full Stack -->
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-title">Aplicación Web Full Stack</div>
-          <div class="project-status status-planned">Próximamente</div>
-        </div>
-        <p class="project-desc">Aplicación completa con frontend en React y backend en FastAPI. Consume datos en tiempo real, incluye dashboard interactivo, autenticación de usuarios y diseño responsive. Despliegue completo con Docker Compose.</p>
-        <div class="project-tags">
-          <span class="tag">React</span><span class="tag">JavaScript</span><span class="tag">FastAPI</span><span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag purple">Full Stack</span>
-        </div>
+      <div class="section-divider">
+        <span class="div-label">// desarrollo web full stack</span>
+        <div class="div-line"></div>
+        <span class="div-desc">ruta de aprendizaje</span>
       </div>
 
-      <!-- SEPARADOR DESARROLLO -->
-      <div style="margin-top:12px;margin-bottom:4px;">
-        <div class="section-label" style="margin-bottom:6px;">// desarrollo web</div>
-        <p style="font-size:0.78rem;color:var(--muted);">Ruta de aprendizaje Full Stack — desde fundamentos hasta aplicaciones completas.</p>
-      </div>
-
-      <!-- HTML + CSS -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">Landing Page con HTML + CSS</div>
           <div class="project-status status-planned">Próximamente</div>
         </div>
-        <p class="project-desc">Primer proyecto de desarrollo web. Página de presentación con diseño responsive, animaciones CSS, variables de color y layout con Flexbox y Grid. Fundamentos sólidos de cómo funciona la web antes de usar frameworks.</p>
+        <p class="project-desc">Fundamentos de desarrollo web. Página responsive con animaciones CSS, variables de color, Flexbox y Grid. Base sólida antes de usar frameworks.</p>
         <div class="project-tags">
           <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Flexbox</span><span class="tag">Grid</span><span class="tag purple">Frontend</span>
         </div>
       </div>
 
-      <!-- JavaScript -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">App de Tareas con JavaScript Puro</div>
           <div class="project-status status-planned">Próximamente</div>
         </div>
-        <p class="project-desc">Aplicación interactiva construida sin frameworks. Manipulación del DOM, eventos, localStorage para persistencia y lógica de programación en el navegador. Base necesaria para entender React desde adentro.</p>
+        <p class="project-desc">Aplicación interactiva sin frameworks. Manipulación del DOM, eventos, localStorage y lógica de programación en el navegador. Base necesaria para entender React desde adentro.</p>
         <div class="project-tags">
           <span class="tag">JavaScript</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">DOM</span><span class="tag purple">Frontend</span>
         </div>
       </div>
 
-      <!-- React -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">Dashboard Interactivo con React</div>
           <div class="project-status status-planned">Próximamente</div>
         </div>
-        <p class="project-desc">Primer proyecto con React. Componentes reutilizables, manejo de estado con hooks (useState, useEffect), consumo de APIs externas y diseño con Tailwind CSS. El framework frontend más demandado del mercado.</p>
+        <p class="project-desc">Primer proyecto con React. Componentes reutilizables, estado con hooks (useState, useEffect), consumo de APIs externas y diseño con Tailwind CSS.</p>
         <div class="project-tags">
           <span class="tag">React</span><span class="tag">JavaScript</span><span class="tag">Tailwind CSS</span><span class="tag">Hooks</span><span class="tag purple">Frontend</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Aplicación Web Full Stack</div>
+          <div class="project-status status-planned">Próximamente</div>
+        </div>
+        <p class="project-desc">Aplicación completa con React y FastAPI. Dashboard interactivo, autenticación de usuarios, diseño responsive y despliegue con Docker Compose.</p>
+        <div class="project-tags">
+          <span class="tag">React</span><span class="tag">JavaScript</span><span class="tag">FastAPI</span><span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag purple">Full Stack</span>
         </div>
       </div>
 
@@ -365,10 +409,22 @@
     <div class="section-label">// 03 — sobre mí</div>
     <h2 class="section-title">¿Quién soy?</h2>
     <div class="about-grid">
-      <div class="about-card"><h3>Formacion</h3><p>Ingeniería de Sistemas (Universidad Cooperativa de Colombia) + Máster en Big Data en Universidad Europea de Madrid.</p></div>
-      <div class="about-card"><h3>Ubicacion</h3><p>Basado en Lisboa, Portugal. Disponible para trabajo remoto o presencial. Abierto a reubicación en España o Latinoamérica.</p></div>
-      <div class="about-card"><h3>Idiomas</h3><p>Español (nativo) · Portugués B1 · Inglés B1.</p></div>
-      <div class="about-card"><h3>Objetivo</h3><p>Unirme a un equipo como Data Engineer, Analista de Datos o Desarrollador Full Stack junior.</p></div>
+      <div class="about-card">
+        <h3>Formación</h3>
+        <p>Ingeniería de Sistemas — Universidad Cooperativa de Colombia.<br>Máster en Big Data — Universidad Europea de Madrid.</p>
+      </div>
+      <div class="about-card">
+        <h3>Ubicación</h3>
+        <p>Basado en Lisboa, Portugal. Disponible para trabajo remoto o presencial. Abierto a reubicación en España o Latinoamérica.</p>
+      </div>
+      <div class="about-card">
+        <h3>Idiomas</h3>
+        <p>Español — nativo<br>Portugués — B1<br>Inglés — B1</p>
+      </div>
+      <div class="about-card">
+        <h3>Objetivo</h3>
+        <p>Unirme a un equipo como Data Engineer, Analista de Datos o Desarrollador Full Stack junior en una empresa que valore el aprendizaje continuo.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -377,12 +433,22 @@
   <div class="container">
     <div class="section-label">// 04 — contacto</div>
     <h2 class="section-title">Hablemos</h2>
-    <p style="font-size:0.83rem;color:var(--muted);max-width:500px;margin-bottom:8px;">Abierto a oportunidades remotas o presenciales en Data Engineering, Análisis de Datos, Backend o Full Stack.</p>
+    <p style="font-size:0.82rem;color:var(--muted);max-width:480px;line-height:1.85;">
+      Abierto a oportunidades remotas o presenciales en Data Engineering, Análisis de Datos, Backend o Full Stack. Respondo en menos de 24 horas.
+    </p>
     <div class="contact-links">
-      <a href="/cdn-cgi/l/email-protection#d7a4b6b9a3aebfb2a5a5b2a5b6e6e597b0bab6bebbf9b4b8ba" class="contact-link"><span class="__cf_email__" data-cfemail="c0b3a1aeb4b9a8a5b2b2a5b2a1f1f280a7ada1a9aceea3afad">E-mail santyherrera12@gmail.com</span></a>
-      <a href="https://www.linkedin.com/in/santiago-herrera-tafur-463887161" target="_blank" class="contact-link">LinkedIn</a>
-      <a href="https://github.com/santyherrera12" target="_blank" class="contact-link">GitHub</a>
+      <a href="mailto:santyherrera12@gmail.com" class="contact-link">✉ santyherrera12@gmail.com</a>
+      <a href="https://www.linkedin.com/in/santiago-herrera-tafur-463887161" target="_blank" class="contact-link">in LinkedIn</a>
+      <a href="https://github.com/santyherrera12" target="_blank" class="contact-link">⌥ GitHub</a>
     </div>
   </div>
 </section>
 
+<footer>
+  <div class="container">
+    <span>santiago herrera tafur</span> · data engineer & full stack developer · lisboa, portugal
+  </div>
+</footer>
+
+</body>
+</html>

@@ -88,6 +88,16 @@ nav a {
   transition: all 0.15s;
 }
 nav a:hover { color: var(--text); background: var(--surface); }
+.nav-cta {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem; font-weight: 600;
+  color: #fff !important; background: var(--accent) !important;
+  padding: 7px 16px !important; border-radius: 6px;
+  border: none; text-decoration: none;
+  transition: all 0.2s;
+  box-shadow: 0 0 16px rgba(59,130,246,0.3);
+}
+.nav-cta:hover { background: #2563eb !important; box-shadow: 0 0 24px rgba(59,130,246,0.5); transform: translateY(-1px); }
 
 /* ── HERO ── */
 .hero {
@@ -333,7 +343,8 @@ section { padding: 100px 0; }
 .status-planned { color: var(--muted2); background: rgba(74,95,122,0.1); border: 1px solid rgba(74,95,122,0.25); }
 .status-done { color: var(--green); background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); }
 
-.project-desc { font-size: 0.82rem; color: var(--muted2); margin-bottom: 16px; line-height: 1.75; }
+.project-desc { font-size: 0.82rem; color: var(--muted2); margin-bottom: 10px; line-height: 1.75; }
+.project-impact { font-size: 0.78rem; color: #6ee7b7; background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.15); border-radius: 6px; padding: 8px 12px; margin-bottom: 14px; line-height: 1.6; }
 .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .tag {
   font-family: 'JetBrains Mono', monospace;
@@ -454,7 +465,7 @@ footer span { color: var(--accent2); }
       <li><a href="#stack">Stack</a></li>
       <li><a href="#projects">Proyectos</a></li>
       <li><a href="#about">Sobre mí</a></li>
-      <li><a href="#contact">Contacto</a></li>
+      <li><a href="mailto:santyherrera12@gmail.com" class="nav-cta">✉ Contactar</a></li>
     </ul>
   </div>
 </nav>
@@ -481,7 +492,7 @@ footer span { color: var(--accent2); }
     </div>
     <div class="hero-stats">
       <div class="stat">
-        <div class="stat-num">7</div>
+        <div class="stat-num">8</div>
         <div class="stat-label">Proyectos completados</div>
       </div>
       <div class="stat">
@@ -521,8 +532,8 @@ footer span { color: var(--accent2); }
         <div class="tline"><span class="p">❯</span> <span class="c">docker ps --format "table {{.Names}}\t{{.Status}}"</span></div>
         <div class="tline"><span class="o">postgres_sql &nbsp; Up 2 hours &nbsp;&nbsp; kafka &nbsp; Up 8 hours &nbsp;&nbsp; mongodb &nbsp; Up 8 hours</span></div>
         <div class="tline"><span class="p">❯</span> <span class="c">git log --oneline -1</span></div>
-        <div class="tline"><span class="o">a7f3c21 Web scraping pipeline con BeautifulSoup y Pandas</span></div>
-        <div class="tline"><span class="comment"># 7 proyectos · 20+ tecnologías · Lisboa, Portugal</span></div>
+        <div class="tline"><span class="o">a7f3c21 ML Pipeline — Random Forest para predicción de abandono laboral</span></div>
+        <div class="tline"><span class="comment"># 8 proyectos · 20+ tecnologías · Lisboa, Portugal</span></div>
       </div>
     </div>
 
@@ -555,17 +566,13 @@ footer span { color: var(--accent2); }
           <span class="stack-pill pill-purple"><span class="pill-dot"></span>Docker</span>
           <span class="stack-pill pill-purple"><span class="pill-dot"></span>Apache Kafka</span>
           <span class="stack-pill pill-purple"><span class="pill-dot"></span>Git</span>
-          <span class="stack-pill pill-purple"><span class="pill-dot"></span>Apache Spark</span>
-          <span class="stack-pill pill-purple"><span class="pill-dot"></span>dbt</span>
         </div>
       </div>
       <div>
         <div class="stack-cat-title">Visualización & Frontend</div>
         <div class="stack-row">
           <span class="stack-pill pill-green"><span class="pill-dot"></span>Power BI</span>
-          <span class="stack-pill pill-green"><span class="pill-dot"></span>React</span>
-          <span class="stack-pill pill-green"><span class="pill-dot"></span>JavaScript</span>
-          <span class="stack-pill pill-green"><span class="pill-dot"></span>HTML / CSS</span>
+          <span class="stack-pill pill-green"><span class="pill-dot"></span>Plotly</span>
         </div>
       </div>
     </div>
@@ -601,6 +608,7 @@ footer span { color: var(--accent2); }
           <div class="project-status status-done">Completado</div>
         </div>
         <p class="project-desc">Pipeline ETL modular que extrae datos del clima en tiempo real desde OpenWeatherMap, transforma con Pandas y carga en CSV histórico. Arquitectura separada en Extract, Transform y Load con manejo seguro de credenciales.</p>
+        <p class="project-impact">💼 Automatiza la recolección de datos que manualmente tomaría horas — base de cualquier sistema de monitoreo meteorológico en producción.</p>
         <div class="project-tags">
           <span class="tag t-blue">Python</span><span class="tag">Pandas</span><span class="tag">REST API</span><span class="tag">python-dotenv</span><span class="tag t-purple">ETL</span>
         </div>
@@ -614,6 +622,7 @@ footer span { color: var(--accent2); }
           <div class="project-status status-done">Completado</div>
         </div>
         <p class="project-desc">Dataset de ventas de videojuegos en Google BigQuery. Queries SQL analíticas para preguntas de negocio: top juegos, ventas por género, publisher y región. Dashboard ejecutivo con 5 visualizaciones conectado directamente a BigQuery.</p>
+        <p class="project-impact">💼 Permite a equipos de negocio tomar decisiones basadas en datos reales sin depender del equipo técnico — reduce el tiempo de análisis de días a minutos.</p>
         <div class="project-tags">
           <span class="tag t-blue">BigQuery</span><span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag t-purple">Cloud Analytics</span>
         </div>
@@ -627,6 +636,7 @@ footer span { color: var(--accent2); }
           <div class="project-status status-done">Completado</div>
         </div>
         <p class="project-desc">Pipeline de datos en tiempo real con Docker Compose. Producer genera transacciones cada 2 segundos, las envía a Apache Kafka y un Consumer las persiste en MongoDB. Más de 200 documentos procesados en prueba.</p>
+        <p class="project-impact">💼 Habilita procesamiento de eventos en tiempo real para e-commerce, fintech o logística — detecta anomalías y fraudes al instante en lugar de al día siguiente.</p>
         <div class="project-tags">
           <span class="tag t-purple">Docker</span><span class="tag t-purple">Apache Kafka</span><span class="tag t-blue">Python</span><span class="tag">MongoDB</span><span class="tag t-green">Streaming</span>
         </div>
@@ -640,6 +650,7 @@ footer span { color: var(--accent2); }
           <div class="project-status status-done">Completado</div>
         </div>
         <p class="project-desc">Aplicación web interactiva de análisis de ventas de videojuegos. Filtros dinámicos por plataforma, género y año, 4 KPIs en tiempo real y 3 gráficos con Plotly: top publishers, ventas por región y evolución temporal.</p>
+        <p class="project-impact">💼 Convierte datos crudos en insights visuales accesibles para cualquier área de la empresa — sin necesidad de conocimientos técnicos.</p>
         <div class="project-tags">
           <span class="tag t-blue">Python</span><span class="tag t-blue">Streamlit</span><span class="tag">Plotly</span><span class="tag">Pandas</span><span class="tag t-purple">Data Viz</span>
         </div>
@@ -653,6 +664,7 @@ footer span { color: var(--accent2); }
           <div class="project-status status-done">Completado</div>
         </div>
         <p class="project-desc">Backend completo con arquitectura en capas. Endpoints CRUD, validación con Pydantic, ORM con SQLAlchemy, PostgreSQL en Docker y documentación automática Swagger UI.</p>
+        <p class="project-impact">💼 Base de cualquier producto digital — permite conectar apps móviles, dashboards y sistemas externos a una fuente de datos centralizada y segura.</p>
         <div class="project-tags">
           <span class="tag t-blue">Python</span><span class="tag t-blue">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">SQLAlchemy</span><span class="tag t-purple">Docker</span>
         </div>
@@ -666,6 +678,7 @@ footer span { color: var(--accent2); }
           <div class="project-status status-done">Completado</div>
         </div>
         <p class="project-desc">SQL profesional sobre base de datos e-commerce con 5 tablas relacionadas. JOINs múltiples, subqueries, CTEs y Window Functions (RANK, LAG, PARTITION BY) para análisis de negocio real.</p>
+        <p class="project-impact">💼 Responde preguntas críticas de negocio directamente desde la base de datos — qué clientes generan más revenue, qué meses son más rentables y cómo evoluciona el ticket promedio.</p>
         <div class="project-tags">
           <span class="tag">SQL</span><span class="tag">PostgreSQL</span><span class="tag t-purple">Docker</span><span class="tag t-green">Window Functions</span><span class="tag t-green">CTEs</span>
         </div>
@@ -679,95 +692,26 @@ footer span { color: var(--accent2); }
           <div class="project-status status-done">Completado</div>
         </div>
         <p class="project-desc">Pipeline automatizado que extrae 980 libros de 50 páginas web con BeautifulSoup, limpia los datos con Pandas y genera un reporte completo de análisis. Arquitectura modular scraper → analysis → main.</p>
+        <p class="project-impact">💼 Automatiza la inteligencia competitiva — monitoreo de precios, productos y tendencias del mercado sin intervención manual.</p>
         <div class="project-tags">
           <span class="tag t-blue">Python</span><span class="tag t-blue">BeautifulSoup</span><span class="tag">Pandas</span><span class="tag t-purple">Automatización</span>
         </div>
         <div class="project-links"><a href="https://github.com/santyherrera12/web-scraping" target="_blank" class="gh-link">↗ GitHub</a></div>
       </div>
 
-      <!-- SEPARADOR DATA -->
-      <div class="proj-divider">
-        <span class="proj-divider-label">// data engineering avanzado</span>
-        <div class="proj-divider-line"></div>
-        <span class="proj-divider-badge">próximamente</span>
-      </div>
-
+      <!-- ML Pipeline -->
       <div class="project-card">
         <div class="project-header">
-          <div class="project-title">Machine Learning Pipeline con Scikit-learn</div>
-          <div class="project-status status-planned">Próximamente</div>
+          <div class="project-title">ML Pipeline — Predicción de Abandono Laboral</div>
+          <div class="project-status status-done">Completado</div>
         </div>
-        <p class="project-desc">Pipeline completo de ML: ingesta, preprocesamiento, clasificación y regresión, métricas, serialización con Joblib y API de predicción con FastAPI.</p>
+        <p class="project-desc">Pipeline completo de ML con Random Forest (95.5% accuracy) que predice si un empleado abandonará la empresa. Incluye entrenamiento, evaluación de métricas y API de predicción en tiempo real con FastAPI.</p>
+        <p class="project-impact">💼 Permite a RRHH identificar empleados en riesgo antes de que renuncien — reduciendo costos de rotación que pueden superar el 200% del salario anual por empleado.</p>
         <div class="project-tags">
           <span class="tag t-blue">Python</span><span class="tag t-blue">Scikit-learn</span><span class="tag">Pandas</span><span class="tag t-blue">FastAPI</span><span class="tag t-purple">Machine Learning</span>
         </div>
+        <div class="project-links"><a href="https://github.com/santyherrera12/ml-pipeline" target="_blank" class="gh-link">↗ GitHub</a></div>
       </div>
-
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-title">Data Warehouse Moderno con dbt + PostgreSQL</div>
-          <div class="project-status status-planned">Próximamente</div>
-        </div>
-        <p class="project-desc">Data Warehouse con patrón medallion (staging → intermediate → marts) usando dbt. Modelos documentados, tests de calidad y linaje visual.</p>
-        <div class="project-tags">
-          <span class="tag t-yellow">dbt</span><span class="tag">SQL</span><span class="tag">PostgreSQL</span><span class="tag t-purple">Docker</span><span class="tag t-purple">Data Warehouse</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-title">Procesamiento Masivo con Apache Spark</div>
-          <div class="project-status status-planned">Próximamente</div>
-        </div>
-        <p class="project-desc">Procesamiento distribuido con PySpark sobre millones de registros. Agregaciones, joins distribuidos y escritura en Parquet en Docker.</p>
-        <div class="project-tags">
-          <span class="tag t-yellow">PySpark</span><span class="tag t-blue">Python</span><span class="tag t-purple">Docker</span><span class="tag">Parquet</span><span class="tag t-purple">Big Data</span>
-        </div>
-      </div>
-
-      <!-- SEPARADOR FRONTEND -->
-      <div class="proj-divider">
-        <span class="proj-divider-label">// desarrollo web full stack</span>
-        <div class="proj-divider-line"></div>
-        <span class="proj-divider-badge">ruta de aprendizaje</span>
-      </div>
-
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-title">Landing Page con HTML + CSS</div>
-          <div class="project-status status-planned">Próximamente</div>
-        </div>
-        <p class="project-desc">Fundamentos web. Página responsive con animaciones CSS, Flexbox y Grid.</p>
-        <div class="project-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Flexbox</span><span class="tag">Grid</span><span class="tag t-green">Frontend</span></div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-title">App de Tareas con JavaScript Puro</div>
-          <div class="project-status status-planned">Próximamente</div>
-        </div>
-        <p class="project-desc">Aplicación interactiva sin frameworks. DOM, eventos, localStorage y lógica en el navegador.</p>
-        <div class="project-tags"><span class="tag t-yellow">JavaScript</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">DOM</span><span class="tag t-green">Frontend</span></div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-title">Dashboard Interactivo con React</div>
-          <div class="project-status status-planned">Próximamente</div>
-        </div>
-        <p class="project-desc">Componentes reutilizables, hooks (useState, useEffect), consumo de APIs y Tailwind CSS.</p>
-        <div class="project-tags"><span class="tag t-yellow">React</span><span class="tag t-yellow">JavaScript</span><span class="tag">Tailwind CSS</span><span class="tag t-green">Frontend</span></div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-title">Aplicación Web Full Stack</div>
-          <div class="project-status status-planned">Próximamente</div>
-        </div>
-        <p class="project-desc">React + FastAPI + PostgreSQL. Dashboard interactivo, autenticación y despliegue con Docker Compose.</p>
-        <div class="project-tags"><span class="tag t-yellow">React</span><span class="tag t-blue">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag t-purple">Docker</span><span class="tag t-purple">Full Stack</span></div>
-      </div>
-
     </div>
   </div>
 </section>

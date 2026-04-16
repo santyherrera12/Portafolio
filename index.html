@@ -492,7 +492,7 @@ footer span { color: var(--accent2); }
     </div>
     <div class="hero-stats">
       <div class="stat">
-        <div class="stat-num">8</div>
+        <div class="stat-num">9</div>
         <div class="stat-label">Proyectos completados</div>
       </div>
       <div class="stat">
@@ -532,8 +532,8 @@ footer span { color: var(--accent2); }
         <div class="tline"><span class="p">❯</span> <span class="c">docker ps --format "table {{.Names}}\t{{.Status}}"</span></div>
         <div class="tline"><span class="o">postgres_sql &nbsp; Up 2 hours &nbsp;&nbsp; kafka &nbsp; Up 8 hours &nbsp;&nbsp; mongodb &nbsp; Up 8 hours</span></div>
         <div class="tline"><span class="p">❯</span> <span class="c">git log --oneline -1</span></div>
-        <div class="tline"><span class="o">a7f3c21 ML Pipeline — Random Forest para predicción de abandono laboral</span></div>
-        <div class="tline"><span class="comment"># 8 proyectos · 20+ tecnologías · Lisboa, Portugal</span></div>
+        <div class="tline"><span class="o">d3a8f12 Data Warehouse con dbt, PostgreSQL y arquitectura Medallion</span></div>
+        <div class="tline"><span class="comment"># 9 proyectos · 20+ tecnologías · Lisboa, Portugal</span></div>
       </div>
     </div>
 
@@ -566,6 +566,7 @@ footer span { color: var(--accent2); }
           <span class="stack-pill pill-purple"><span class="pill-dot"></span>Docker</span>
           <span class="stack-pill pill-purple"><span class="pill-dot"></span>Apache Kafka</span>
           <span class="stack-pill pill-purple"><span class="pill-dot"></span>Git</span>
+          <span class="stack-pill pill-purple"><span class="pill-dot"></span>dbt</span>
         </div>
       </div>
       <div>
@@ -712,6 +713,21 @@ footer span { color: var(--accent2); }
         </div>
         <div class="project-links"><a href="https://github.com/santyherrera12/ml-pipeline" target="_blank" class="gh-link">↗ GitHub</a></div>
       </div>
+
+      <!-- dbt Warehouse -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Data Warehouse con dbt + PostgreSQL</div>
+          <div class="project-status status-done">Completado</div>
+        </div>
+        <p class="project-desc">Data Warehouse con arquitectura Medallion (Bronze → Silver → Gold) usando dbt. 9 modelos SQL versionados, 17 tests de calidad automáticos y tablas Gold listas para dashboards. PostgreSQL en Docker.</p>
+        <p class="project-impact">💼 Centraliza y estandariza los datos de la empresa en capas limpias — equipos de negocio acceden a métricas confiables sin depender del equipo técnico para cada consulta.</p>
+        <div class="project-tags">
+          <span class="tag t-yellow">dbt</span><span class="tag">SQL</span><span class="tag">PostgreSQL</span><span class="tag t-purple">Docker</span><span class="tag t-purple">Data Warehouse</span>
+        </div>
+        <div class="project-links"><a href="https://github.com/santyherrera12/dbt-warehouse" target="_blank" class="gh-link">↗ GitHub</a></div>
+      </div>
+
     </div>
   </div>
 </section>

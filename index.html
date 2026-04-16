@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,268 +7,123 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #04060a;
-  --bg2: #080d14;
-  --surface: #0c1220;
-  --surface2: #111928;
-  --border: #162030;
-  --border2: #1e2d42;
-  --accent: #3b82f6;
-  --accent2: #06b6d4;
-  --accent3: #8b5cf6;
-  --text: #e2e8f0;
-  --muted: #4a5f7a;
-  --muted2: #6b82a0;
-  --green: #10b981;
-  --yellow: #f59e0b;
-  --red: #ef4444;
+  --bg: #04060a; --bg2: #080d14; --surface: #0c1220; --surface2: #111928;
+  --border: #162030; --border2: #1e2d42;
+  --accent: #3b82f6; --accent2: #06b6d4; --accent3: #8b5cf6;
+  --text: #e2e8f0; --muted: #4a5f7a; --muted2: #6b82a0;
+  --green: #10b981; --yellow: #f59e0b;
 }
-
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'Space Grotesk', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-/* NOISE TEXTURE */
+body { font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
 body::before {
-  content: '';
-  position: fixed; inset: 0;
+  content: ''; position: fixed; inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
   pointer-events: none; z-index: 0; opacity: 0.4;
 }
-
-/* AMBIENT GLOW */
-.glow-1 {
-  position: fixed; top: -300px; right: -200px;
-  width: 800px; height: 800px;
-  background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 60%);
-  pointer-events: none; z-index: 0;
-}
-.glow-2 {
-  position: fixed; bottom: -200px; left: -200px;
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(139,92,246,0.06) 0%, transparent 60%);
-  pointer-events: none; z-index: 0;
-}
-
+.glow-1 { position: fixed; top: -300px; right: -200px; width: 800px; height: 800px; background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 60%); pointer-events: none; z-index: 0; }
+.glow-2 { position: fixed; bottom: -200px; left: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(139,92,246,0.06) 0%, transparent 60%); pointer-events: none; z-index: 0; }
 .container { max-width: 960px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 1; }
 
-/* ── NAV ── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 0;
-  background: rgba(4,6,10,0.8);
-  backdrop-filter: blur(20px) saturate(1.5);
-  border-bottom: 1px solid var(--border);
-}
-nav .inner {
-  max-width: 960px; margin: 0 auto; padding: 0 32px;
-  display: flex; justify-content: space-between; align-items: center;
-  height: 60px;
-}
-.nav-logo {
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 600; font-size: 0.88rem;
-  color: var(--text); letter-spacing: -0.3px;
-  display: flex; align-items: center; gap: 8px;
-}
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0; background: rgba(4,6,10,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+nav .inner { max-width: 960px; margin: 0 auto; padding: 0 32px; display: flex; justify-content: space-between; align-items: center; height: 60px; }
+.nav-logo { font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 0.88rem; color: var(--text); display: flex; align-items: center; gap: 8px; }
 .nav-logo .bracket { color: var(--accent); }
 .nav-logo .dot { color: var(--accent2); }
-nav ul { list-style: none; display: flex; gap: 4px; }
-nav a {
-  color: var(--muted2); text-decoration: none;
-  font-size: 0.78rem; font-weight: 500;
-  padding: 6px 12px; border-radius: 6px;
-  transition: all 0.15s;
-}
+nav ul { list-style: none; display: flex; gap: 4px; align-items: center; }
+nav a { color: var(--muted2); text-decoration: none; font-size: 0.78rem; font-weight: 500; padding: 6px 12px; border-radius: 6px; transition: all 0.15s; }
 nav a:hover { color: var(--text); background: var(--surface); }
-.nav-cta {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.78rem; font-weight: 600;
-  color: #fff !important; background: var(--accent) !important;
-  padding: 7px 16px !important; border-radius: 6px;
-  border: none; text-decoration: none;
-  transition: all 0.2s;
-  box-shadow: 0 0 16px rgba(59,130,246,0.3);
-}
+.nav-cta { font-family: 'Space Grotesk', sans-serif; font-size: 0.78rem; font-weight: 600; color: #fff !important; background: var(--accent) !important; padding: 7px 16px !important; border-radius: 6px; box-shadow: 0 0 16px rgba(59,130,246,0.3); transition: all 0.2s; }
 .nav-cta:hover { background: #2563eb !important; box-shadow: 0 0 24px rgba(59,130,246,0.5); transform: translateY(-1px); }
 
-/* ── HERO ── */
-.hero {
-  min-height: 100vh; display: flex; align-items: center;
-  padding: 120px 0 80px; position: relative;
-}
+/* LANG SWITCHER */
+.lang-switcher { display: flex; gap: 4px; margin-left: 8px; }
+.lang-btn { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 600; color: var(--muted2); background: transparent; border: 1px solid var(--border2); padding: 4px 9px; border-radius: 5px; cursor: pointer; transition: all 0.15s; }
+.lang-btn:hover, .lang-btn.active { color: var(--accent2); border-color: var(--accent2); background: rgba(6,182,212,0.08); }
 
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 10px;
-  margin-bottom: 28px;
-}
-.hero-eyebrow .dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 12px var(--green);
-  animation: pulse-dot 2s ease-in-out infinite;
-}
-@keyframes pulse-dot {
-  0%, 100% { box-shadow: 0 0 6px var(--green); opacity: 1; }
-  50% { box-shadow: 0 0 18px var(--green); opacity: 0.7; }
-}
-.hero-eyebrow span {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem; color: var(--green);
-  letter-spacing: 0.12em; text-transform: uppercase;
-}
-
-.hero h1 {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
-  font-size: clamp(3rem, 7.5vw, 5.8rem);
-  line-height: 1.0;
-  letter-spacing: -2px;
-  margin-bottom: 8px;
-}
-.hero h1 .line1 { color: #fff; display: block; }
-.hero h1 .line2 { color: #fff; display: block; }
-.hero h1 .line3 {
-  display: block;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--accent3) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero-sub {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.82rem; color: var(--muted2);
-  margin: 24px 0 36px;
-  max-width: 500px; line-height: 1.8;
-}
+/* HERO */
+.hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 28px; }
+.hero-eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 12px var(--green); animation: pulse-dot 2s ease-in-out infinite; }
+@keyframes pulse-dot { 0%,100% { box-shadow: 0 0 6px var(--green); } 50% { box-shadow: 0 0 18px var(--green); opacity: 0.7; } }
+.hero-eyebrow span { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--green); letter-spacing: 0.12em; text-transform: uppercase; }
+.hero h1 { font-weight: 700; font-size: clamp(3rem, 7.5vw, 5.8rem); line-height: 1.0; letter-spacing: -2px; margin-bottom: 8px; }
+.hero h1 .line1, .hero h1 .line2 { color: #fff; display: block; }
+.hero h1 .line3 { display: block; background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--accent3) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-sub { font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--muted2); margin: 24px 0 32px; max-width: 500px; line-height: 1.8; }
 .hero-sub .hl { color: var(--accent2); }
 
-.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 64px; }
+/* HERO CONTACT BLOCK */
+.hero-contact-block { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
+.hero-contact-item { display: inline-flex; align-items: center; gap: 7px; font-family: 'JetBrains Mono', monospace; font-size: 0.73rem; color: var(--muted2); text-decoration: none; padding: 7px 14px; border: 1px solid var(--border2); border-radius: 6px; background: var(--surface); transition: all 0.2s; }
+.hero-contact-item:hover { color: var(--accent2); border-color: var(--accent2); background: rgba(6,182,212,0.06); transform: translateY(-1px); }
+.hero-contact-item .ico { font-size: 0.85rem; }
 
-.btn {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.84rem; font-weight: 600;
-  padding: 12px 24px; border-radius: 8px;
-  cursor: pointer; text-decoration: none;
-  transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px;
-  letter-spacing: -0.2px;
-}
-.btn-primary {
-  background: var(--accent);
-  color: #fff; border: 1px solid var(--accent);
-  box-shadow: 0 0 24px rgba(59,130,246,0.3);
-}
-.btn-primary:hover {
-  background: #2563eb;
-  box-shadow: 0 0 32px rgba(59,130,246,0.5);
-  transform: translateY(-1px);
-}
-.btn-ghost {
-  background: transparent; color: var(--muted2);
-  border: 1px solid var(--border2);
-}
-.btn-ghost:hover { color: var(--text); border-color: var(--accent); background: rgba(59,130,246,0.05); transform: translateY(-1px); }
+/* CV BUTTONS */
+.cv-block { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+.cv-btn { display: inline-flex; align-items: center; gap: 7px; font-family: 'Space Grotesk', sans-serif; font-size: 0.78rem; font-weight: 600; color: #fff; background: linear-gradient(135deg, var(--accent), var(--accent3)); padding: 10px 18px; border-radius: 8px; text-decoration: none; transition: all 0.2s; box-shadow: 0 4px 14px rgba(59,130,246,0.25); }
+.cv-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(59,130,246,0.4); }
+.cv-btn.secondary { background: var(--surface); color: var(--muted2); border: 1px solid var(--border2); box-shadow: none; }
+.cv-btn.secondary:hover { color: var(--text); border-color: var(--accent2); background: rgba(6,182,212,0.06); }
 
-.hero-stats {
-  display: flex; gap: 0;
-  border: 1px solid var(--border2);
-  border-radius: 12px; overflow: hidden;
-  background: var(--surface);
-}
-.stat {
-  flex: 1; padding: 20px 24px;
-  border-right: 1px solid var(--border2);
-  text-align: center;
-}
+.hero-stats { display: flex; gap: 0; border: 1px solid var(--border2); border-radius: 12px; overflow: hidden; background: var(--surface); }
+.stat { flex: 1; padding: 20px 24px; border-right: 1px solid var(--border2); text-align: center; }
 .stat:last-child { border-right: none; }
-.stat-num {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.8rem; font-weight: 700; color: #fff;
-  line-height: 1;
-  background: linear-gradient(135deg, #fff, var(--accent2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+.stat-num { font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; font-weight: 700; line-height: 1; background: linear-gradient(135deg, #fff, var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .stat-label { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 6px; }
 
-/* ── SECTIONS ── */
+/* SECTIONS */
 section { padding: 100px 0; }
-.section-eyebrow {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem; color: var(--accent2);
-  letter-spacing: 0.2em; text-transform: uppercase;
-  margin-bottom: 10px; display: flex; align-items: center; gap: 10px;
-}
-.section-eyebrow::before {
-  content: ''; width: 24px; height: 1px; background: var(--accent2);
-}
-.section-title {
-  font-size: 2.4rem; font-weight: 700;
-  color: #fff; margin-bottom: 52px;
-  letter-spacing: -1px; line-height: 1.1;
-}
-.section-title span {
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+.section-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent2); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+.section-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--accent2); }
+.section-title { font-size: 2.4rem; font-weight: 700; color: #fff; margin-bottom: 52px; letter-spacing: -1px; line-height: 1.1; }
+.section-title span { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.section-sep { height: 1px; background: linear-gradient(90deg, transparent, var(--border2), transparent); }
 
-/* ── TERMINAL ── */
-.terminal {
-  background: #020508;
-  border: 1px solid var(--border2);
-  border-radius: 12px; padding: 0;
-  margin-bottom: 48px;
-  overflow: hidden;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.6);
-}
-.terminal-header {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border2);
-  padding: 12px 20px;
-  display: flex; align-items: center; gap: 8px;
-}
+/* ABOUT */
+.about-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.about-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; transition: all 0.2s; }
+.about-card:hover { border-color: var(--border2); transform: translateY(-1px); }
+.about-card h3 { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent2); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.about-card h3::before { content: '//'; color: var(--muted); }
+.about-card p { font-size: 0.83rem; color: var(--muted2); line-height: 1.85; }
+.about-card ul { list-style: none; }
+.about-card ul li { font-size: 0.83rem; color: var(--muted2); line-height: 2; display: flex; align-items: flex-start; gap: 8px; }
+.about-card ul li::before { content: '→'; color: var(--accent2); flex-shrink: 0; }
+.about-full { grid-column: 1 / -1; }
+.lang-list { display: flex; flex-direction: column; gap: 10px; }
+.lang-item { display: flex; justify-content: space-between; align-items: center; }
+.lang-name { font-size: 0.83rem; color: var(--muted2); }
+.lang-badge { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; padding: 2px 8px; border-radius: 4px; }
+.lang-native { color: var(--green); background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); }
+.lang-b1 { color: var(--accent2); background: rgba(6,182,212,0.08); border: 1px solid rgba(6,182,212,0.2); }
+.lang-learning { color: var(--yellow); background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); }
+
+/* CONTACT */
+.contact-wrapper { background: var(--surface); border: 1px solid var(--border2); border-radius: 16px; padding: 48px; position: relative; overflow: hidden; }
+.contact-wrapper::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 60%); pointer-events: none; }
+.contact-title { font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 8px; letter-spacing: -0.5px; }
+.contact-sub { font-size: 0.84rem; color: var(--muted2); max-width: 420px; line-height: 1.7; margin-bottom: 32px; }
+.contact-links { display: flex; gap: 12px; flex-wrap: wrap; }
+.contact-link { display: flex; align-items: center; gap: 10px; font-size: 0.82rem; font-weight: 500; color: var(--muted2); text-decoration: none; padding: 12px 20px; border: 1px solid var(--border2); border-radius: 8px; background: var(--bg2); transition: all 0.2s; }
+.contact-link:hover { color: #fff; border-color: var(--accent); background: rgba(59,130,246,0.08); transform: translateY(-1px); }
+
+/* TERMINAL */
+.terminal { background: #020508; border: 1px solid var(--border2); border-radius: 12px; padding: 0; margin-bottom: 48px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.6); }
+.terminal-header { background: var(--surface); border-bottom: 1px solid var(--border2); padding: 12px 20px; display: flex; align-items: center; gap: 8px; }
 .tdot { width: 12px; height: 12px; border-radius: 50%; }
-.tdot-r { background: #ff5f57; }
-.tdot-y { background: #febc2e; }
-.tdot-g { background: #28c840; }
-.terminal-fname {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem; color: var(--muted);
-  margin-left: auto; letter-spacing: 0.05em;
-}
+.tdot-r { background: #ff5f57; } .tdot-y { background: #febc2e; } .tdot-g { background: #28c840; }
+.terminal-fname { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--muted); margin-left: auto; }
 .terminal-body { padding: 20px 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; }
 .tline { line-height: 2.1; }
-.tline .p { color: var(--green); }
-.tline .c { color: var(--text); }
-.tline .o { color: var(--accent2); }
-.tline .comment { color: var(--muted); }
+.tline .p { color: var(--green); } .tline .c { color: var(--text); } .tline .o { color: var(--accent2); } .tline .comment { color: var(--muted); }
 
-/* ── STACK ── */
+/* STACK */
 .stack-categories { display: flex; flex-direction: column; gap: 24px; }
-.stack-cat-title {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.68rem; color: var(--muted2);
-  text-transform: uppercase; letter-spacing: 0.15em;
-  margin-bottom: 12px;
-}
+.stack-cat-title { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 12px; }
 .stack-row { display: flex; flex-wrap: wrap; gap: 8px; }
-.stack-pill {
-  display: inline-flex; align-items: center; gap: 7px;
-  padding: 7px 14px; border-radius: 6px;
-  font-size: 0.78rem; font-weight: 500;
-  border: 1px solid; transition: all 0.2s; cursor: default;
-}
+.stack-pill { display: inline-flex; align-items: center; gap: 7px; padding: 7px 14px; border-radius: 6px; font-size: 0.78rem; font-weight: 500; border: 1px solid; transition: all 0.2s; cursor: default; }
 .pill-blue { color: #93c5fd; background: rgba(59,130,246,0.08); border-color: rgba(59,130,246,0.2); }
 .pill-blue:hover { background: rgba(59,130,246,0.15); border-color: rgba(59,130,246,0.4); transform: translateY(-2px); }
 .pill-cyan { color: #67e8f9; background: rgba(6,182,212,0.08); border-color: rgba(6,182,212,0.2); }
@@ -280,173 +135,50 @@ section { padding: 100px 0; }
 .pill-yellow { color: #fcd34d; background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.2); }
 .pill-yellow:hover { background: rgba(245,158,11,0.15); border-color: rgba(245,158,11,0.4); transform: translateY(-2px); }
 .pill-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-.pill-blue .pill-dot { background: #3b82f6; }
-.pill-cyan .pill-dot { background: #06b6d4; }
-.pill-purple .pill-dot { background: #8b5cf6; }
-.pill-green .pill-dot { background: #10b981; }
+.pill-blue .pill-dot { background: #3b82f6; } .pill-cyan .pill-dot { background: #06b6d4; }
+.pill-purple .pill-dot { background: #8b5cf6; } .pill-green .pill-dot { background: #10b981; }
 .pill-yellow .pill-dot { background: #f59e0b; }
 
-/* ── PROJECTS ── */
+/* PROJECTS */
 .projects-grid { display: flex; flex-direction: column; gap: 12px; }
-
-.proj-divider {
-  display: flex; align-items: center; gap: 14px;
-  margin: 24px 0 4px; padding: 0 4px;
-}
-.proj-divider-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem; color: var(--accent);
-  text-transform: uppercase; letter-spacing: 0.18em;
-  white-space: nowrap;
-}
-.proj-divider-line { flex: 1; height: 1px; background: var(--border); }
-.proj-divider-badge {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.62rem; color: var(--muted);
-  white-space: nowrap;
-}
-
-.project-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px; padding: 24px 28px;
-  transition: all 0.2s; position: relative; overflow: hidden;
-  cursor: default;
-}
-.project-card::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(59,130,246,0.03) 0%, transparent 60%);
-  opacity: 0; transition: opacity 0.3s;
-  pointer-events: none;
-}
-.project-card:hover {
-  border-color: var(--border2);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-}
+.project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; transition: all 0.2s; position: relative; overflow: hidden; }
+.project-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(59,130,246,0.03) 0%, transparent 60%); opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+.project-card:hover { border-color: var(--border2); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
 .project-card:hover::after { opacity: 1; }
-
-.project-card.featured {
-  border-color: rgba(59,130,246,0.25);
-  background: linear-gradient(135deg, rgba(59,130,246,0.05) 0%, var(--surface) 40%);
-}
-
+.project-card.featured { border-color: rgba(59,130,246,0.25); background: linear-gradient(135deg, rgba(59,130,246,0.05) 0%, var(--surface) 40%); }
 .project-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 10px; }
 .project-title { font-size: 1rem; font-weight: 600; color: #fff; letter-spacing: -0.3px; }
-.project-status {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 4px 10px; border-radius: 20px; flex-shrink: 0; font-weight: 400;
-}
+.project-status { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; flex-shrink: 0; }
 .status-wip { color: var(--yellow); background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); }
-.status-planned { color: var(--muted2); background: rgba(74,95,122,0.1); border: 1px solid rgba(74,95,122,0.25); }
 .status-done { color: var(--green); background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); }
-
 .project-desc { font-size: 0.82rem; color: var(--muted2); margin-bottom: 10px; line-height: 1.75; }
 .project-impact { font-size: 0.78rem; color: #6ee7b7; background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.15); border-radius: 6px; padding: 8px 12px; margin-bottom: 14px; line-height: 1.6; }
 .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.63rem; padding: 3px 9px; border-radius: 4px;
-  color: var(--accent2); background: rgba(6,182,212,0.07);
-  border: 1px solid rgba(6,182,212,0.15);
-}
+.tag { font-family: 'JetBrains Mono', monospace; font-size: 0.63rem; padding: 3px 9px; border-radius: 4px; color: var(--accent2); background: rgba(6,182,212,0.07); border: 1px solid rgba(6,182,212,0.15); }
 .tag.t-purple { color: #c4b5fd; background: rgba(139,92,246,0.07); border-color: rgba(139,92,246,0.15); }
 .tag.t-green { color: #6ee7b7; background: rgba(16,185,129,0.07); border-color: rgba(16,185,129,0.15); }
 .tag.t-blue { color: #93c5fd; background: rgba(59,130,246,0.07); border-color: rgba(59,130,246,0.15); }
-
+.tag.t-yellow { color: #fcd34d; background: rgba(245,158,11,0.07); border-color: rgba(245,158,11,0.15); }
 .project-links { display: flex; gap: 8px; margin-top: 16px; }
-.gh-link {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem; color: var(--accent);
-  text-decoration: none; padding: 6px 14px;
-  border: 1px solid rgba(59,130,246,0.2); border-radius: 6px;
-  background: rgba(59,130,246,0.05); transition: all 0.2s;
-}
-.gh-link:hover { background: rgba(59,130,246,0.12); border-color: rgba(59,130,246,0.4); color: #60a5fa; }
+.gh-link { display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); text-decoration: none; padding: 6px 14px; border: 1px solid rgba(59,130,246,0.2); border-radius: 6px; background: rgba(59,130,246,0.05); transition: all 0.2s; }
+.gh-link:hover { background: rgba(59,130,246,0.12); border-color: rgba(59,130,246,0.4); }
 
-/* ── ABOUT ── */
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.about-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px; padding: 24px;
-  transition: all 0.2s;
-}
-.about-card:hover { border-color: var(--border2); transform: translateY(-1px); }
-.about-card h3 {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem; color: var(--accent2);
-  text-transform: uppercase; letter-spacing: 0.12em;
-  margin-bottom: 12px;
-  display: flex; align-items: center; gap: 8px;
-}
-.about-card h3::before { content: '//'; color: var(--muted); }
-.about-card p { font-size: 0.83rem; color: var(--muted2); line-height: 1.8; }
-
-/* ── CONTACT ── */
-.contact-wrapper {
-  background: var(--surface);
-  border: 1px solid var(--border2);
-  border-radius: 16px; padding: 48px;
-  position: relative; overflow: hidden;
-}
-.contact-wrapper::before {
-  content: '';
-  position: absolute; top: -100px; right: -100px;
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 60%);
-  pointer-events: none;
-}
-.contact-title { font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 8px; letter-spacing: -0.5px; }
-.contact-sub { font-size: 0.84rem; color: var(--muted2); max-width: 420px; line-height: 1.7; margin-bottom: 32px; }
-.contact-links { display: flex; gap: 12px; flex-wrap: wrap; }
-.contact-link {
-  display: flex; align-items: center; gap: 10px;
-  font-size: 0.82rem; font-weight: 500;
-  color: var(--muted2); text-decoration: none;
-  padding: 12px 20px; border: 1px solid var(--border2);
-  border-radius: 8px; background: var(--bg2);
-  transition: all 0.2s;
-}
-.contact-link:hover { color: #fff; border-color: var(--accent); background: rgba(59,130,246,0.08); transform: translateY(-1px); }
-.contact-link .link-icon { font-size: 1rem; }
-
-/* ── FOOTER ── */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 32px 0; text-align: center;
-}
-footer p {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem; color: var(--muted);
-}
+/* FOOTER */
+footer { border-top: 1px solid var(--border); padding: 32px 0; text-align: center; }
+footer p { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--muted); }
 footer span { color: var(--accent2); }
 
-/* ── DIVIDER ── */
-.section-sep {
-  height: 1px; background: linear-gradient(90deg, transparent, var(--border2), transparent);
-  margin: 0;
-}
-
-/* ── CURSOR ── */
-.cursor {
-  display: inline-block; width: 2px; height: 0.85em;
-  background: var(--accent2); margin-left: 2px;
-  vertical-align: text-bottom; animation: blink 1s step-end infinite;
-}
+.cursor { display: inline-block; width: 2px; height: 0.85em; background: var(--accent2); margin-left: 2px; vertical-align: text-bottom; animation: blink 1s step-end infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 
-/* ── RESPONSIVE ── */
 @media (max-width: 640px) {
-  .about-grid { grid-template-columns: 1fr; }
-  nav ul { display: none; }
+  .about-hero { grid-template-columns: 1fr; }
+  nav ul { gap: 2px; }
+  .lang-switcher { display: none; }
   .hero-stats { flex-direction: column; }
   .stat { border-right: none; border-bottom: 1px solid var(--border2); }
   .stat:last-child { border-bottom: none; }
-  .contact-wrapper { padding: 28px 24px; }
+  .contact-wrapper { padding: 28px 20px; }
 }
 </style>
 </head>
@@ -462,10 +194,17 @@ footer span { color: var(--accent2); }
       <span class="bracket">[</span>sht<span class="dot">.</span>dev<span class="bracket">]</span>
     </div>
     <ul>
-      <li><a href="#stack">Stack</a></li>
-      <li><a href="#projects">Proyectos</a></li>
-      <li><a href="#about">Sobre mí</a></li>
-      <li><a href="mailto:santyherrera12@gmail.com" class="nav-cta">✉ Contactar</a></li>
+      <li><a href="#about" data-i18n="nav_about">Sobre mí</a></li>
+      <li><a href="#stack" data-i18n="nav_stack">Stack</a></li>
+      <li><a href="#projects" data-i18n="nav_projects">Proyectos</a></li>
+      <li><a href="mailto:santyherrera12@gmail.com" class="nav-cta" data-i18n="nav_contact">✉ Contactar</a></li>
+      <li>
+        <div class="lang-switcher">
+          <button class="lang-btn active" onclick="setLang('es')">ES</button>
+          <button class="lang-btn" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" onclick="setLang('pt')">PT</button>
+        </div>
+      </li>
     </ul>
   </div>
 </nav>
@@ -475,7 +214,7 @@ footer span { color: var(--accent2); }
   <div class="container">
     <div class="hero-eyebrow">
       <div class="dot"></div>
-      <span>disponible para trabajo remoto y presencial</span>
+      <span data-i18n="hero_available">disponible para trabajo remoto y presencial</span>
     </div>
     <h1>
       <span class="line1">Santiago</span>
@@ -483,29 +222,140 @@ footer span { color: var(--accent2); }
       <span class="line3">Data &amp; Full Stack</span>
     </h1>
     <p class="hero-sub">
-      Ingeniero de Sistemas · Máster en Big Data — <span class="hl">Universidad Europea de Madrid</span><br>
-      Pipelines de datos · APIs · Plataformas analíticas · Desarrollo web<span class="cursor"></span>
+      <span data-i18n="hero_title">Ingeniero de Sistemas · Máster en Big Data —</span> <span class="hl">Universidad Europea de Madrid</span><br>
+      <span data-i18n="hero_desc">Pipelines de datos · APIs · Plataformas analíticas · Desarrollo web</span><span class="cursor"></span>
     </p>
-    <div class="hero-ctas">
-      <a href="#projects" class="btn btn-primary">Ver proyectos →</a>
-      <a href="#contact" class="btn btn-ghost">Contactar</a>
+
+    <!-- CONTACTO PROMINENTE -->
+    <div class="hero-contact-block">
+      <a href="mailto:santyherrera12@gmail.com" class="hero-contact-item">
+        <span class="ico">✉</span> santyherrera12@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/santiago-herrera-tafur-463887161" target="_blank" class="hero-contact-item">
+        <span class="ico">in</span> LinkedIn
+      </a>
+      <a href="https://github.com/santyherrera12" target="_blank" class="hero-contact-item">
+        <span class="ico">⌥</span> GitHub
+      </a>
+      <span class="hero-contact-item" style="cursor:default;">
+        <span class="ico">📍</span> Lisboa, Portugal
+      </span>
     </div>
+
+    <!-- CVs -->
+    <div class="cv-block">
+      <a href="CV_ATS_Santiago_Herrera_ES.pdf" target="_blank" class="cv-btn">
+        ↓ CV en Español
+      </a>
+      <a href="CV_ATS_Santiago_Herrera_EN.pdf" target="_blank" class="cv-btn secondary">
+        ↓ CV in English
+      </a>
+      <a href="CV_ATS_Santiago_Herrera_PT.pdf" target="_blank" class="cv-btn secondary">
+        ↓ CV em Português
+      </a>
+    </div>
+
     <div class="hero-stats">
       <div class="stat">
-        <div class="stat-num">9</div>
-        <div class="stat-label">Proyectos completados</div>
+        <div class="stat-num">14</div>
+        <div class="stat-label" data-i18n="stat_projects">Proyectos completados</div>
       </div>
       <div class="stat">
         <div class="stat-num">20+</div>
-        <div class="stat-label">Tecnologías</div>
+        <div class="stat-label" data-i18n="stat_tech">Tecnologías</div>
       </div>
       <div class="stat">
         <div class="stat-num">3</div>
-        <div class="stat-label">Idiomas</div>
+        <div class="stat-label" data-i18n="stat_langs">Idiomas</div>
       </div>
       <div class="stat">
-        <div class="stat-num">2</div>
-        <div class="stat-label">Titulaciones</div>
+        <div class="stat-num">3</div>
+        <div class="stat-label" data-i18n="stat_degrees">Titulaciones</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"></div>
+
+<!-- SOBRE MÍ -->
+<section id="about">
+  <div class="container">
+    <div class="section-eyebrow">01 — <span data-i18n="nav_about">sobre mí</span></div>
+    <h2 class="section-title" data-i18n="about_title">¿Quién <span>soy?</span></h2>
+    <div class="about-hero">
+
+      <div class="about-card">
+        <h3 data-i18n="about_location_title">Ubicación</h3>
+        <p data-i18n="about_location">📍 Lisboa, Portugal. Disponible para trabajo remoto o presencial. Abierto a reubicación en España o Latinoamérica.</p>
+      </div>
+
+      <div class="about-card">
+        <h3 data-i18n="about_goal_title">Objetivo</h3>
+        <p data-i18n="about_goal">🎯 Incorporarme como Data Engineer, Analista de Datos o Desarrollador Full Stack Junior en un equipo que fomente el aprendizaje continuo, la innovación y el desarrollo profesional.</p>
+      </div>
+
+      <div class="about-card about-full">
+        <h3 data-i18n="about_edu_title">Formación</h3>
+        <ul>
+          <li data-i18n="about_edu_1">🎓 Máster en Big Data — Universidad Europea de Madrid</li>
+          <li data-i18n="about_edu_2">🎓 Ingeniería de Sistemas — Universidad Cooperativa de Colombia</li>
+          <li data-i18n="about_edu_3">🎓 Tecnólogo en Sistemas — SENA</li>
+        </ul>
+      </div>
+
+      <div class="about-card">
+        <h3 data-i18n="about_lang_title">Idiomas</h3>
+        <div class="lang-list">
+          <div class="lang-item">
+            <span class="lang-name" data-i18n="lang_es">Español</span>
+            <span class="lang-badge lang-native" data-i18n="lang_native">Nativo</span>
+          </div>
+          <div class="lang-item">
+            <span class="lang-name" data-i18n="lang_pt">Portugués</span>
+            <span class="lang-badge lang-b1">B1</span>
+          </div>
+          <div class="lang-item">
+            <span class="lang-name" data-i18n="lang_en">Inglés</span>
+            <span class="lang-badge lang-b1">B1</span>
+          </div>
+        </div>
+        <p style="font-size:0.73rem;color:var(--yellow);margin-top:12px;" data-i18n="lang_note">📚 Actualmente tomando clases de inglés y portugués.</p>
+      </div>
+
+      <div class="about-card">
+        <h3 data-i18n="about_interests_title">Intereses</h3>
+        <ul>
+          <li data-i18n="interest_1">Data Engineering & Big Data</li>
+          <li data-i18n="interest_2">Machine Learning aplicado</li>
+          <li data-i18n="interest_3">Desarrollo Full Stack</li>
+          <li data-i18n="interest_4">Arquitecturas de datos en la nube</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"></div>
+
+<!-- CONTACTO -->
+<section id="contact">
+  <div class="container">
+    <div class="section-eyebrow">02 — <span data-i18n="nav_contact_label">contacto</span></div>
+    <div class="contact-wrapper">
+      <h2 class="contact-title" data-i18n="contact_title">Hablemos</h2>
+      <p class="contact-sub" data-i18n="contact_sub">Abierto a oportunidades remotas o presenciales en Data Engineering, Análisis de Datos, Backend o Full Stack. Respondo en menos de 24 horas.</p>
+      <div class="contact-links">
+        <a href="mailto:santyherrera12@gmail.com" class="contact-link">
+          <span>✉</span> santyherrera12@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/santiago-herrera-tafur-463887161" target="_blank" class="contact-link">
+          <span>in</span> LinkedIn
+        </a>
+        <a href="https://github.com/santyherrera12" target="_blank" class="contact-link">
+          <span>⌥</span> GitHub
+        </a>
       </div>
     </div>
   </div>
@@ -516,27 +366,23 @@ footer span { color: var(--accent2); }
 <!-- STACK -->
 <section id="stack">
   <div class="container">
-    <div class="section-eyebrow">01 — tecnologías</div>
-    <h2 class="section-title">Stack <span>técnico</span></h2>
-
+    <div class="section-eyebrow">03 — <span data-i18n="nav_stack">tecnologías</span></div>
+    <h2 class="section-title">Stack <span data-i18n="stack_title">técnico</span></h2>
     <div class="terminal">
       <div class="terminal-header">
-        <div class="tdot tdot-r"></div>
-        <div class="tdot tdot-y"></div>
-        <div class="tdot tdot-g"></div>
+        <div class="tdot tdot-r"></div><div class="tdot tdot-y"></div><div class="tdot tdot-g"></div>
         <span class="terminal-fname">santiago@dev — zsh — 80×24</span>
       </div>
       <div class="terminal-body">
         <div class="tline"><span class="p">❯</span> <span class="c">python --version</span></div>
         <div class="tline"><span class="o">Python 3.13.7</span></div>
         <div class="tline"><span class="p">❯</span> <span class="c">docker ps --format "table {{.Names}}\t{{.Status}}"</span></div>
-        <div class="tline"><span class="o">postgres_sql &nbsp; Up 2 hours &nbsp;&nbsp; kafka &nbsp; Up 8 hours &nbsp;&nbsp; mongodb &nbsp; Up 8 hours</span></div>
+        <div class="tline"><span class="o">postgres_warehouse &nbsp; kafka &nbsp; mongodb &nbsp; spark</span></div>
         <div class="tline"><span class="p">❯</span> <span class="c">git log --oneline -1</span></div>
-        <div class="tline"><span class="o">d3a8f12 Data Warehouse con dbt, PostgreSQL y arquitectura Medallion</span></div>
-        <div class="tline"><span class="comment"># 9 proyectos · 20+ tecnologías · Lisboa, Portugal</span></div>
+        <div class="tline"><span class="o">a9f1c32 Full Stack app — React + FastAPI + PostgreSQL</span></div>
+        <div class="tline"><span class="comment"># 14 proyectos · 20+ tecnologías · Lisboa, Portugal</span></div>
       </div>
     </div>
-
     <div class="stack-categories">
       <div>
         <div class="stack-cat-title">Python & Data</div>
@@ -546,34 +392,38 @@ footer span { color: var(--accent2); }
           <span class="stack-pill pill-blue"><span class="pill-dot"></span>FastAPI</span>
           <span class="stack-pill pill-blue"><span class="pill-dot"></span>Streamlit</span>
           <span class="stack-pill pill-blue"><span class="pill-dot"></span>Scikit-learn</span>
+          <span class="stack-pill pill-blue"><span class="pill-dot"></span>PySpark</span>
           <span class="stack-pill pill-blue"><span class="pill-dot"></span>BeautifulSoup</span>
         </div>
       </div>
       <div>
-        <div class="stack-cat-title">Bases de datos & Cloud</div>
+        <div class="stack-cat-title" data-i18n="stack_db">Bases de datos & Cloud</div>
         <div class="stack-row">
           <span class="stack-pill pill-cyan"><span class="pill-dot"></span>SQL</span>
           <span class="stack-pill pill-cyan"><span class="pill-dot"></span>PostgreSQL</span>
           <span class="stack-pill pill-cyan"><span class="pill-dot"></span>MongoDB</span>
           <span class="stack-pill pill-cyan"><span class="pill-dot"></span>Google BigQuery</span>
           <span class="stack-pill pill-cyan"><span class="pill-dot"></span>AWS S3 / IAM</span>
-          <span class="stack-pill pill-cyan"><span class="pill-dot"></span>Cassandra</span>
         </div>
       </div>
       <div>
-        <div class="stack-cat-title">Infraestructura & DevOps</div>
+        <div class="stack-cat-title" data-i18n="stack_infra">Infraestructura & DevOps</div>
         <div class="stack-row">
           <span class="stack-pill pill-purple"><span class="pill-dot"></span>Docker</span>
           <span class="stack-pill pill-purple"><span class="pill-dot"></span>Apache Kafka</span>
-          <span class="stack-pill pill-purple"><span class="pill-dot"></span>Git</span>
+          <span class="stack-pill pill-purple"><span class="pill-dot"></span>Apache Spark</span>
           <span class="stack-pill pill-purple"><span class="pill-dot"></span>dbt</span>
+          <span class="stack-pill pill-purple"><span class="pill-dot"></span>Git</span>
         </div>
       </div>
       <div>
-        <div class="stack-cat-title">Visualización & Frontend</div>
+        <div class="stack-cat-title" data-i18n="stack_viz">Visualización & Frontend</div>
         <div class="stack-row">
           <span class="stack-pill pill-green"><span class="pill-dot"></span>Power BI</span>
           <span class="stack-pill pill-green"><span class="pill-dot"></span>Plotly</span>
+          <span class="stack-pill pill-green"><span class="pill-dot"></span>React</span>
+          <span class="stack-pill pill-green"><span class="pill-dot"></span>JavaScript</span>
+          <span class="stack-pill pill-green"><span class="pill-dot"></span>HTML / CSS</span>
         </div>
       </div>
     </div>
@@ -582,204 +432,182 @@ footer span { color: var(--accent2); }
 
 <div class="section-sep"></div>
 
-<!-- PROJECTS -->
+<!-- PROYECTOS -->
 <section id="projects">
   <div class="container">
-    <div class="section-eyebrow">02 — portafolio</div>
-    <h2 class="section-title">Proyectos <span>destacados</span></h2>
-
+    <div class="section-eyebrow">04 — <span data-i18n="nav_projects">portafolio</span></div>
+    <h2 class="section-title" data-i18n="projects_title">Proyectos <span>destacados</span></h2>
     <div class="projects-grid">
 
-      <!-- TFM -->
       <div class="project-card featured">
         <div class="project-header">
-          <div class="project-title">Plataforma Analítica de Importaciones Petroleras — TFM</div>
-          <div class="project-status status-wip">En progreso</div>
+          <div class="project-title" data-i18n="p_tfm_title">Plataforma Analítica de Importaciones Petroleras — TFM</div>
+          <div class="project-status status-wip" data-i18n="status_wip">En progreso</div>
         </div>
-        <p class="project-desc">Arquitectura on-premise Bronze/Silver/Gold Data Lake para análisis de importaciones de petróleo en España (2003–2025). Dataset CNMC con más de 3.800 registros. Modelos predictivos con Prophet y ARIMA, pipeline en Python y dashboard ejecutivo en Power BI.</p>
+        <p class="project-desc" data-i18n="p_tfm_desc">Arquitectura on-premise Bronze/Silver/Gold Data Lake para análisis de importaciones de petróleo en España (2003–2025). Dataset CNMC con más de 3.800 registros. Modelos predictivos con Prophet y ARIMA, pipeline en Python y dashboard ejecutivo en Power BI.</p>
         <div class="project-tags">
           <span class="tag t-blue">Python</span><span class="tag t-blue">AWS S3</span><span class="tag">Power BI</span><span class="tag">Prophet</span><span class="tag">ARIMA</span><span class="tag t-purple">Data Lake</span><span class="tag t-green">Big Data</span>
         </div>
       </div>
 
-      <!-- ETL -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">ETL Pipeline con Python — Datos del Clima</div>
-          <div class="project-status status-done">Completado</div>
+          <div class="project-status status-done" data-i18n="status_done">Completado</div>
         </div>
-        <p class="project-desc">Pipeline ETL modular que extrae datos del clima en tiempo real desde OpenWeatherMap, transforma con Pandas y carga en CSV histórico. Arquitectura separada en Extract, Transform y Load con manejo seguro de credenciales.</p>
-        <p class="project-impact">💼 Automatiza la recolección de datos que manualmente tomaría horas — base de cualquier sistema de monitoreo meteorológico en producción.</p>
-        <div class="project-tags">
-          <span class="tag t-blue">Python</span><span class="tag">Pandas</span><span class="tag">REST API</span><span class="tag">python-dotenv</span><span class="tag t-purple">ETL</span>
-        </div>
+        <p class="project-desc">Pipeline ETL modular que extrae datos del clima en tiempo real desde OpenWeatherMap, transforma con Pandas y carga en CSV histórico. Arquitectura separada en Extract, Transform y Load.</p>
+        <p class="project-impact">💼 Automatiza la recolección de datos que manualmente tomaría horas — base de cualquier sistema de monitoreo en producción.</p>
+        <div class="project-tags"><span class="tag t-blue">Python</span><span class="tag">Pandas</span><span class="tag">REST API</span><span class="tag">python-dotenv</span><span class="tag t-purple">ETL</span></div>
         <div class="project-links"><a href="https://github.com/santyherrera12/etl-pipeline" target="_blank" class="gh-link">↗ GitHub</a></div>
       </div>
 
-      <!-- BigQuery -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">Dashboard Analítico con BigQuery + Power BI</div>
-          <div class="project-status status-done">Completado</div>
+          <div class="project-status status-done" data-i18n="status_done">Completado</div>
         </div>
-        <p class="project-desc">Dataset de ventas de videojuegos en Google BigQuery. Queries SQL analíticas para preguntas de negocio: top juegos, ventas por género, publisher y región. Dashboard ejecutivo con 5 visualizaciones conectado directamente a BigQuery.</p>
-        <p class="project-impact">💼 Permite a equipos de negocio tomar decisiones basadas en datos reales sin depender del equipo técnico — reduce el tiempo de análisis de días a minutos.</p>
-        <div class="project-tags">
-          <span class="tag t-blue">BigQuery</span><span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag t-purple">Cloud Analytics</span>
-        </div>
+        <p class="project-desc">Dataset de ventas de videojuegos en Google BigQuery. Queries SQL analíticas para preguntas de negocio. Dashboard ejecutivo con 5 visualizaciones conectado directamente a BigQuery.</p>
+        <p class="project-impact">💼 Permite tomar decisiones basadas en datos sin depender del equipo técnico — reduce el tiempo de análisis de días a minutos.</p>
+        <div class="project-tags"><span class="tag t-blue">BigQuery</span><span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag t-purple">Cloud Analytics</span></div>
         <div class="project-links"><a href="https://github.com/santyherrera12/dashboard-bigquery" target="_blank" class="gh-link">↗ GitHub</a></div>
       </div>
 
-      <!-- Streaming -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">Streaming Pipeline — Docker + Kafka + MongoDB</div>
-          <div class="project-status status-done">Completado</div>
+          <div class="project-status status-done" data-i18n="status_done">Completado</div>
         </div>
-        <p class="project-desc">Pipeline de datos en tiempo real con Docker Compose. Producer genera transacciones cada 2 segundos, las envía a Apache Kafka y un Consumer las persiste en MongoDB. Más de 200 documentos procesados en prueba.</p>
-        <p class="project-impact">💼 Habilita procesamiento de eventos en tiempo real para e-commerce, fintech o logística — detecta anomalías y fraudes al instante en lugar de al día siguiente.</p>
-        <div class="project-tags">
-          <span class="tag t-purple">Docker</span><span class="tag t-purple">Apache Kafka</span><span class="tag t-blue">Python</span><span class="tag">MongoDB</span><span class="tag t-green">Streaming</span>
-        </div>
+        <p class="project-desc">Pipeline de datos en tiempo real con Docker Compose. Producer genera transacciones cada 2 segundos, las envía a Apache Kafka y un Consumer las persiste en MongoDB.</p>
+        <p class="project-impact">💼 Detecta anomalías y fraudes al instante en lugar de al día siguiente — estándar en fintech y e-commerce.</p>
+        <div class="project-tags"><span class="tag t-purple">Docker</span><span class="tag t-purple">Apache Kafka</span><span class="tag t-blue">Python</span><span class="tag">MongoDB</span><span class="tag t-green">Streaming</span></div>
         <div class="project-links"><a href="https://github.com/santyherrera12/streaming-pipeline" target="_blank" class="gh-link">↗ GitHub</a></div>
       </div>
 
-      <!-- Streamlit -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">App de Análisis de Datos con Streamlit</div>
-          <div class="project-status status-done">Completado</div>
+          <div class="project-status status-done" data-i18n="status_done">Completado</div>
         </div>
-        <p class="project-desc">Aplicación web interactiva de análisis de ventas de videojuegos. Filtros dinámicos por plataforma, género y año, 4 KPIs en tiempo real y 3 gráficos con Plotly: top publishers, ventas por región y evolución temporal.</p>
-        <p class="project-impact">💼 Convierte datos crudos en insights visuales accesibles para cualquier área de la empresa — sin necesidad de conocimientos técnicos.</p>
-        <div class="project-tags">
-          <span class="tag t-blue">Python</span><span class="tag t-blue">Streamlit</span><span class="tag">Plotly</span><span class="tag">Pandas</span><span class="tag t-purple">Data Viz</span>
-        </div>
+        <p class="project-desc">Aplicación web interactiva de análisis de ventas. Filtros dinámicos, 4 KPIs en tiempo real y 3 gráficos con Plotly: top publishers, ventas por región y evolución temporal.</p>
+        <p class="project-impact">💼 Convierte datos crudos en insights visuales accesibles para cualquier área — sin conocimientos técnicos.</p>
+        <div class="project-tags"><span class="tag t-blue">Python</span><span class="tag t-blue">Streamlit</span><span class="tag">Plotly</span><span class="tag">Pandas</span><span class="tag t-purple">Data Viz</span></div>
         <div class="project-links"><a href="https://github.com/santyherrera12/dashboard-videojuegos" target="_blank" class="gh-link">↗ GitHub</a></div>
       </div>
 
-      <!-- API REST -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">API REST con FastAPI + PostgreSQL</div>
-          <div class="project-status status-done">Completado</div>
+          <div class="project-status status-done" data-i18n="status_done">Completado</div>
         </div>
-        <p class="project-desc">Backend completo con arquitectura en capas. Endpoints CRUD, validación con Pydantic, ORM con SQLAlchemy, PostgreSQL en Docker y documentación automática Swagger UI.</p>
-        <p class="project-impact">💼 Base de cualquier producto digital — permite conectar apps móviles, dashboards y sistemas externos a una fuente de datos centralizada y segura.</p>
-        <div class="project-tags">
-          <span class="tag t-blue">Python</span><span class="tag t-blue">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">SQLAlchemy</span><span class="tag t-purple">Docker</span>
-        </div>
+        <p class="project-desc">Backend completo con arquitectura en capas. Endpoints CRUD, validación con Pydantic, ORM con SQLAlchemy, PostgreSQL en Docker y Swagger UI.</p>
+        <p class="project-impact">💼 Permite conectar apps móviles, dashboards y sistemas externos a una fuente de datos centralizada y segura.</p>
+        <div class="project-tags"><span class="tag t-blue">Python</span><span class="tag t-blue">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">SQLAlchemy</span><span class="tag t-purple">Docker</span></div>
         <div class="project-links"><a href="https://github.com/santyherrera12/api-productos" target="_blank" class="gh-link">↗ GitHub</a></div>
       </div>
 
-      <!-- SQL -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">Análisis Avanzado con SQL + PostgreSQL</div>
-          <div class="project-status status-done">Completado</div>
+          <div class="project-status status-done" data-i18n="status_done">Completado</div>
         </div>
-        <p class="project-desc">SQL profesional sobre base de datos e-commerce con 5 tablas relacionadas. JOINs múltiples, subqueries, CTEs y Window Functions (RANK, LAG, PARTITION BY) para análisis de negocio real.</p>
-        <p class="project-impact">💼 Responde preguntas críticas de negocio directamente desde la base de datos — qué clientes generan más revenue, qué meses son más rentables y cómo evoluciona el ticket promedio.</p>
-        <div class="project-tags">
-          <span class="tag">SQL</span><span class="tag">PostgreSQL</span><span class="tag t-purple">Docker</span><span class="tag t-green">Window Functions</span><span class="tag t-green">CTEs</span>
-        </div>
+        <p class="project-desc">SQL profesional sobre base de datos e-commerce con 5 tablas. JOINs múltiples, subqueries, CTEs y Window Functions (RANK, LAG, PARTITION BY).</p>
+        <p class="project-impact">💼 Responde preguntas críticas de negocio directamente desde la base de datos — revenue por cliente, meses rentables y evolución del ticket promedio.</p>
+        <div class="project-tags"><span class="tag">SQL</span><span class="tag">PostgreSQL</span><span class="tag t-purple">Docker</span><span class="tag t-green">Window Functions</span><span class="tag t-green">CTEs</span></div>
         <div class="project-links"><a href="https://github.com/santyherrera12/sql-analytics" target="_blank" class="gh-link">↗ GitHub</a></div>
       </div>
 
-      <!-- Web Scraping -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">Web Scraping + Análisis Automatizado</div>
-          <div class="project-status status-done">Completado</div>
+          <div class="project-status status-done" data-i18n="status_done">Completado</div>
         </div>
-        <p class="project-desc">Pipeline automatizado que extrae 980 libros de 50 páginas web con BeautifulSoup, limpia los datos con Pandas y genera un reporte completo de análisis. Arquitectura modular scraper → analysis → main.</p>
-        <p class="project-impact">💼 Automatiza la inteligencia competitiva — monitoreo de precios, productos y tendencias del mercado sin intervención manual.</p>
-        <div class="project-tags">
-          <span class="tag t-blue">Python</span><span class="tag t-blue">BeautifulSoup</span><span class="tag">Pandas</span><span class="tag t-purple">Automatización</span>
-        </div>
+        <p class="project-desc">Pipeline que extrae 980 libros de 50 páginas web con BeautifulSoup, limpia con Pandas y genera reporte de análisis. Arquitectura modular scraper → analysis → main.</p>
+        <p class="project-impact">💼 Automatiza la inteligencia competitiva — monitoreo de precios y tendencias del mercado sin intervención manual.</p>
+        <div class="project-tags"><span class="tag t-blue">Python</span><span class="tag t-blue">BeautifulSoup</span><span class="tag">Pandas</span><span class="tag t-purple">Automatización</span></div>
         <div class="project-links"><a href="https://github.com/santyherrera12/web-scraping" target="_blank" class="gh-link">↗ GitHub</a></div>
       </div>
 
-      <!-- ML Pipeline -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">ML Pipeline — Predicción de Abandono Laboral</div>
-          <div class="project-status status-done">Completado</div>
+          <div class="project-status status-done" data-i18n="status_done">Completado</div>
         </div>
-        <p class="project-desc">Pipeline completo de ML con Random Forest (95.5% accuracy) que predice si un empleado abandonará la empresa. Incluye entrenamiento, evaluación de métricas y API de predicción en tiempo real con FastAPI.</p>
-        <p class="project-impact">💼 Permite a RRHH identificar empleados en riesgo antes de que renuncien — reduciendo costos de rotación que pueden superar el 200% del salario anual por empleado.</p>
-        <div class="project-tags">
-          <span class="tag t-blue">Python</span><span class="tag t-blue">Scikit-learn</span><span class="tag">Pandas</span><span class="tag t-blue">FastAPI</span><span class="tag t-purple">Machine Learning</span>
-        </div>
+        <p class="project-desc">Pipeline de ML con Random Forest (95.5% accuracy) que predice si un empleado abandonará la empresa. Entrenamiento, métricas y API de predicción en tiempo real con FastAPI.</p>
+        <p class="project-impact">💼 Permite a RRHH identificar empleados en riesgo antes de que renuncien — reduciendo costos de rotación que superan el 200% del salario anual.</p>
+        <div class="project-tags"><span class="tag t-blue">Python</span><span class="tag t-blue">Scikit-learn</span><span class="tag">Pandas</span><span class="tag t-blue">FastAPI</span><span class="tag t-purple">Machine Learning</span></div>
         <div class="project-links"><a href="https://github.com/santyherrera12/ml-pipeline" target="_blank" class="gh-link">↗ GitHub</a></div>
       </div>
 
-      <!-- dbt Warehouse -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">Data Warehouse con dbt + PostgreSQL</div>
-          <div class="project-status status-done">Completado</div>
+          <div class="project-status status-done" data-i18n="status_done">Completado</div>
         </div>
-        <p class="project-desc">Data Warehouse con arquitectura Medallion (Bronze → Silver → Gold) usando dbt. 9 modelos SQL versionados, 17 tests de calidad automáticos y tablas Gold listas para dashboards. PostgreSQL en Docker.</p>
-        <p class="project-impact">💼 Centraliza y estandariza los datos de la empresa en capas limpias — equipos de negocio acceden a métricas confiables sin depender del equipo técnico para cada consulta.</p>
-        <div class="project-tags">
-          <span class="tag t-yellow">dbt</span><span class="tag">SQL</span><span class="tag">PostgreSQL</span><span class="tag t-purple">Docker</span><span class="tag t-purple">Data Warehouse</span>
-        </div>
+        <p class="project-desc">Data Warehouse con arquitectura Medallion (Bronze → Silver → Gold) usando dbt. 9 modelos SQL versionados y 17 tests de calidad automáticos.</p>
+        <p class="project-impact">💼 Centraliza los datos en capas limpias — equipos de negocio acceden a métricas confiables sin depender del equipo técnico.</p>
+        <div class="project-tags"><span class="tag t-yellow">dbt</span><span class="tag">SQL</span><span class="tag">PostgreSQL</span><span class="tag t-purple">Docker</span><span class="tag t-purple">Data Warehouse</span></div>
         <div class="project-links"><a href="https://github.com/santyherrera12/dbt-warehouse" target="_blank" class="gh-link">↗ GitHub</a></div>
       </div>
 
-    </div>
-  </div>
-</section>
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Apache Spark Pipeline — Procesamiento Masivo</div>
+          <div class="project-status status-done" data-i18n="status_done">Completado</div>
+        </div>
+        <p class="project-desc">Pipeline distribuido con PySpark que procesa 100,000 transacciones. Limpieza, agregaciones distribuidas y Window Functions (RANK, LAG) sobre dataset masivo.</p>
+        <p class="project-impact">💼 Escala el procesamiento de datos a millones de registros en paralelo — necesario cuando Pandas ya no es suficiente.</p>
+        <div class="project-tags"><span class="tag t-yellow">PySpark</span><span class="tag t-blue">Python</span><span class="tag t-green">Big Data</span><span class="tag t-green">Window Functions</span></div>
+        <div class="project-links"><a href="https://github.com/santyherrera12/spark-pipeline" target="_blank" class="gh-link">↗ GitHub</a></div>
+      </div>
 
-<div class="section-sep"></div>
+      <!-- Landing Page -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Landing Page — FlowTask</div>
+          <div class="project-status status-done" data-i18n="status_done">Completado</div>
+        </div>
+        <p class="project-desc">Landing page profesional dark mode construida con HTML y CSS puro. Hero con gradiente, grid de features, tabla de precios con plan destacado y diseño responsive.</p>
+        <p class="project-impact">💼 Demuestra dominio de los fundamentos web — base necesaria para cualquier desarrollo frontend profesional.</p>
+        <div class="project-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Flexbox</span><span class="tag">Grid</span><span class="tag t-green">Frontend</span></div>
+        <div class="project-links"><a href="https://github.com/santyherrera12/landing-page" target="_blank" class="gh-link">↗ GitHub</a></div>
+      </div>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="container">
-    <div class="section-eyebrow">03 — sobre mí</div>
-    <h2 class="section-title">¿Quién <span>soy?</span></h2>
-    <div class="about-grid">
-      <div class="about-card">
-        <h3>Formación</h3>
-        <p>Ingeniería de Sistemas — Universidad Cooperativa de Colombia.<br>Máster en Big Data — Universidad Europea de Madrid.</p>
+      <!-- Colombia Explorer -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Colombia Explorer 🇨🇴</div>
+          <div class="project-status status-done" data-i18n="status_done">Completado</div>
+        </div>
+        <p class="project-desc">App interactiva para registrar destinos de viaje por las 6 regiones naturales de Colombia. Filtros por región y estado, persistencia con localStorage, sin frameworks.</p>
+        <p class="project-impact">💼 Demuestra manipulación del DOM, eventos y persistencia de datos en el navegador — fundamentos de cualquier app web moderna.</p>
+        <div class="project-tags"><span class="tag t-yellow">JavaScript</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">localStorage</span><span class="tag t-green">Frontend</span></div>
+        <div class="project-links"><a href="https://github.com/santyherrera12/colombia-explorer" target="_blank" class="gh-link">↗ GitHub</a></div>
       </div>
-      <div class="about-card">
-        <h3>Ubicación</h3>
-        <p>Basado en Lisboa, Portugal. Disponible para trabajo remoto o presencial. Abierto a reubicación en España o Latinoamérica.</p>
-      </div>
-      <div class="about-card">
-        <h3>Idiomas</h3>
-        <p>Español — nativo<br>Portugués — B1<br>Inglés — B1</p>
-      </div>
-      <div class="about-card">
-        <h3>Objetivo</h3>
-        <p>Unirme como Data Engineer, Analista de Datos o Desarrollador Full Stack junior en un equipo que valore el aprendizaje continuo.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<div class="section-sep"></div>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="container">
-    <div class="section-eyebrow">04 — contacto</div>
-    <div class="contact-wrapper">
-      <h2 class="contact-title">Hablemos</h2>
-      <p class="contact-sub">Abierto a oportunidades remotas o presenciales en Data Engineering, Análisis de Datos, Backend o Full Stack. Respondo en menos de 24 horas.</p>
-      <div class="contact-links">
-        <a href="mailto:santyherrera12@gmail.com" class="contact-link">
-          <span class="link-icon">✉</span> santyherrera12@gmail.com
-        </a>
-        <a href="https://www.linkedin.com/in/santiago-herrera-tafur-463887161" target="_blank" class="contact-link">
-          <span class="link-icon">in</span> LinkedIn
-        </a>
-        <a href="https://github.com/santyherrera12" target="_blank" class="contact-link">
-          <span class="link-icon">⌥</span> GitHub
-        </a>
+      <!-- Dashboard React -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Dashboard de Gastronomia Portuguesa 🍽️</div>
+          <div class="project-status status-done" data-i18n="status_done">Completado</div>
+        </div>
+        <p class="project-desc">Dashboard analítico con React y Recharts. KPIs de un restaurante portugués, gráfico de ventas mensuales, ranking de platos y distribución de clientes por ciudad.</p>
+        <p class="project-impact">💼 Combina visualización de datos con React — el stack más demandado para dashboards ejecutivos en tiempo real.</p>
+        <div class="project-tags"><span class="tag t-yellow">React</span><span class="tag t-yellow">Recharts</span><span class="tag">Vite</span><span class="tag t-green">Data Viz</span></div>
+        <div class="project-links"><a href="https://github.com/santyherrera12/dashboard-react" target="_blank" class="gh-link">↗ GitHub</a></div>
       </div>
+
+      <!-- Full Stack -->
+      <div class="project-card featured">
+        <div class="project-header">
+          <div class="project-title">DataFlow — App Full Stack ⚡</div>
+          <div class="project-status status-done" data-i18n="status_done">Completado</div>
+        </div>
+        <p class="project-desc">Aplicación Full Stack completa para gestión de proyectos de Data Engineering. React en el frontend, FastAPI en el backend y PostgreSQL como base de datos. Arquitectura real de producción con CRUD completo.</p>
+        <p class="project-impact">💼 Demuestra capacidad de construir una aplicación completa de principio a fin — desde la base de datos hasta la interfaz de usuario.</p>
+        <div class="project-tags"><span class="tag t-yellow">React</span><span class="tag t-blue">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag t-purple">Docker</span><span class="tag t-purple">Full Stack</span></div>
+        <div class="project-links"><a href="https://github.com/santyherrera12/fullstack-app" target="_blank" class="gh-link">↗ GitHub</a></div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -789,6 +617,89 @@ footer span { color: var(--accent2); }
     <p><span>Santiago Herrera Tafur</span> · Data Engineer & Full Stack Developer · Lisboa, Portugal</p>
   </div>
 </footer>
+
+<script>
+const i18n = {
+  es: {
+    nav_about: "Sobre mí", nav_stack: "Stack", nav_projects: "Proyectos", nav_contact: "✉ Contactar", nav_contact_label: "contacto",
+    hero_available: "disponible para trabajo remoto y presencial",
+    hero_title: "Ingeniero de Sistemas · Máster en Big Data —",
+    hero_desc: "Pipelines de datos · APIs · Plataformas analíticas · Desarrollo web",
+    stat_projects: "Proyectos completados", stat_tech: "Tecnologías", stat_langs: "Idiomas", stat_degrees: "Titulaciones",
+    about_title: "¿Quién soy?",
+    about_location_title: "Ubicación", about_location: "📍 Lisboa, Portugal. Disponible para trabajo remoto o presencial. Abierto a reubicación en España o Latinoamérica.",
+    about_goal_title: "Objetivo", about_goal: "🎯 Incorporarme como Data Engineer, Analista de Datos o Desarrollador Full Stack Junior en un equipo que fomente el aprendizaje continuo, la innovación y el desarrollo profesional.",
+    about_edu_title: "Formación",
+    about_edu_1: "🎓 Máster en Big Data — Universidad Europea de Madrid",
+    about_edu_2: "🎓 Ingeniería de Sistemas — Universidad Cooperativa de Colombia",
+    about_edu_3: "🎓 Tecnólogo en Sistemas — SENA",
+    about_lang_title: "Idiomas", lang_es: "Español", lang_pt: "Portugués", lang_en: "Inglés",
+    lang_native: "Nativo", lang_note: "📚 Actualmente tomando clases de inglés y portugués.",
+    about_interests_title: "Intereses", interest_1: "Data Engineering & Big Data", interest_2: "Machine Learning aplicado", interest_3: "Desarrollo Full Stack", interest_4: "Arquitecturas de datos en la nube",
+    contact_title: "Hablemos", contact_sub: "Abierto a oportunidades remotas o presenciales en Data Engineering, Análisis de Datos, Backend o Full Stack. Respondo en menos de 24 horas.",
+    stack_title: "técnico", stack_db: "Bases de datos & Cloud", stack_infra: "Infraestructura & DevOps", stack_viz: "Visualización",
+    projects_title: "Proyectos destacados",
+    status_wip: "En progreso", status_done: "Completado",
+    p_tfm_title: "Plataforma Analítica de Importaciones Petroleras — TFM",
+    p_tfm_desc: "Arquitectura on-premise Bronze/Silver/Gold Data Lake para análisis de importaciones de petróleo en España (2003–2025). Dataset CNMC con más de 3.800 registros. Modelos predictivos con Prophet y ARIMA."
+  },
+  en: {
+    nav_about: "About", nav_stack: "Stack", nav_projects: "Projects", nav_contact: "✉ Contact", nav_contact_label: "contact",
+    hero_available: "available for remote and on-site work",
+    hero_title: "Systems Engineer · Master's in Big Data —",
+    hero_desc: "Data pipelines · APIs · Analytics platforms · Web development",
+    stat_projects: "Completed projects", stat_tech: "Technologies", stat_langs: "Languages", stat_degrees: "Degrees",
+    about_title: "Who am I?",
+    about_location_title: "Location", about_location: "📍 Lisbon, Portugal. Available for remote or on-site work. Open to relocation to Spain or Latin America.",
+    about_goal_title: "Goal", about_goal: "🎯 Join as a Data Engineer, Data Analyst or Junior Full Stack Developer in a team that fosters continuous learning, innovation and professional growth.",
+    about_edu_title: "Education",
+    about_edu_1: "🎓 Master's in Big Data — Universidad Europea de Madrid",
+    about_edu_2: "🎓 Systems Engineering — Universidad Cooperativa de Colombia",
+    about_edu_3: "🎓 Systems Technology — SENA",
+    about_lang_title: "Languages", lang_es: "Spanish", lang_pt: "Portuguese", lang_en: "English",
+    lang_native: "Native", lang_note: "📚 Currently taking English and Portuguese classes.",
+    about_interests_title: "Interests", interest_1: "Data Engineering & Big Data", interest_2: "Applied Machine Learning", interest_3: "Full Stack Development", interest_4: "Cloud data architectures",
+    contact_title: "Let's talk", contact_sub: "Open to remote or on-site opportunities in Data Engineering, Data Analysis, Backend or Full Stack. I reply within 24 hours.",
+    stack_title: "stack", stack_db: "Databases & Cloud", stack_infra: "Infrastructure & DevOps", stack_viz: "Visualization",
+    projects_title: "Featured projects",
+    status_wip: "In progress", status_done: "Completed",
+    p_tfm_title: "Petroleum Imports Analytics Platform — Master's Thesis",
+    p_tfm_desc: "On-premise Bronze/Silver/Gold Data Lake architecture for petroleum import analysis in Spain (2003–2025). CNMC dataset with over 3,800 records. Predictive models with Prophet and ARIMA."
+  },
+  pt: {
+    nav_about: "Sobre mim", nav_stack: "Stack", nav_projects: "Projetos", nav_contact: "✉ Contactar", nav_contact_label: "contacto",
+    hero_available: "disponível para trabalho remoto e presencial",
+    hero_title: "Engenheiro de Sistemas · Mestrado em Big Data —",
+    hero_desc: "Pipelines de dados · APIs · Plataformas analíticas · Desenvolvimento web",
+    stat_projects: "Projetos concluídos", stat_tech: "Tecnologias", stat_langs: "Idiomas", stat_degrees: "Títulos",
+    about_title: "Quem sou?",
+    about_location_title: "Localização", about_location: "📍 Lisboa, Portugal. Disponível para trabalho remoto ou presencial. Aberto a relocalização para Espanha ou América Latina.",
+    about_goal_title: "Objetivo", about_goal: "🎯 Integrar-me como Engenheiro de Dados, Analista de Dados ou Desenvolvedor Full Stack Júnior numa equipa que promova a aprendizagem contínua, a inovação e o desenvolvimento profissional.",
+    about_edu_title: "Formação",
+    about_edu_1: "🎓 Mestrado em Big Data — Universidad Europea de Madrid",
+    about_edu_2: "🎓 Engenharia de Sistemas — Universidad Cooperativa de Colombia",
+    about_edu_3: "🎓 Tecnólogo em Sistemas — SENA",
+    about_lang_title: "Idiomas", lang_es: "Espanhol", lang_pt: "Português", lang_en: "Inglês",
+    lang_native: "Nativo", lang_note: "📚 Atualmente a frequentar aulas de inglês e português.",
+    about_interests_title: "Interesses", interest_1: "Data Engineering & Big Data", interest_2: "Machine Learning aplicado", interest_3: "Desenvolvimento Full Stack", interest_4: "Arquiteturas de dados na nuvem",
+    contact_title: "Vamos falar", contact_sub: "Disponível para oportunidades remotas ou presenciais em Data Engineering, Análise de Dados, Backend ou Full Stack. Respondo em menos de 24 horas.",
+    stack_title: "técnico", stack_db: "Bases de dados & Cloud", stack_infra: "Infraestrutura & DevOps", stack_viz: "Visualização",
+    projects_title: "Projetos em destaque",
+    status_wip: "Em progresso", status_done: "Concluído",
+    p_tfm_title: "Plataforma Analítica de Importações Petrolíferas — TFM",
+    p_tfm_desc: "Arquitetura on-premise Bronze/Silver/Gold Data Lake para análise de importações de petróleo em Espanha (2003–2025). Dataset CNMC com mais de 3.800 registos. Modelos preditivos com Prophet e ARIMA."
+  }
+};
+
+function setLang(lang) {
+  document.documentElement.setAttribute('lang', lang);
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === lang.toUpperCase()));
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (i18n[lang][key]) el.textContent = i18n[lang][key];
+  });
+}
+</script>
 
 </body>
 </html>

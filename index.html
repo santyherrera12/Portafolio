@@ -173,8 +173,8 @@ footer span { color: var(--accent2); }
 
 @media (max-width: 640px) {
   .about-hero { grid-template-columns: 1fr; }
+  .nav-link { display: none; }
   nav ul { gap: 2px; }
-  .lang-switcher { display: none; }
   .hero-stats { flex-direction: column; }
   .stat { border-right: none; border-bottom: 1px solid var(--border2); }
   .stat:last-child { border-bottom: none; }
@@ -194,9 +194,9 @@ footer span { color: var(--accent2); }
       <span class="bracket">[</span>sht<span class="dot">.</span>dev<span class="bracket">]</span>
     </div>
     <ul>
-      <li><a href="#about" data-i18n="nav_about">Sobre mí</a></li>
-      <li><a href="#stack" data-i18n="nav_stack">Stack</a></li>
-      <li><a href="#projects" data-i18n="nav_projects">Proyectos</a></li>
+      <li class="nav-link"><a href="#about" data-i18n="nav_about">Sobre mí</a></li>
+      <li class="nav-link"><a href="#stack" data-i18n="nav_stack">Stack</a></li>
+      <li class="nav-link"><a href="#projects" data-i18n="nav_projects">Proyectos</a></li>
       <li><a href="#contact" class="nav-cta" data-i18n="nav_contact">✉ Contactar</a></li>
       <li>
         <div class="lang-switcher">

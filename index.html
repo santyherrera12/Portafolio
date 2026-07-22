@@ -441,13 +441,15 @@ footer span { color: var(--accent2); }
 
       <div class="project-card featured">
         <div class="project-header">
-          <div class="project-title" data-i18n="p_tfm_title">Plataforma Analítica de Importaciones Petroleras — TFM</div>
+          <div class="project-title" data-i18n="p_tfm_title">Plataforma de Análisis y Predicción de la Balanza Petrolífera — TFM</div>
           <div class="project-status status-wip" data-i18n="status_wip">En progreso</div>
         </div>
-        <p class="project-desc" data-i18n="p_tfm_desc">Arquitectura on-premise Bronze/Silver/Gold Data Lake para análisis de importaciones de petróleo en España (2003–2025). Dataset CNMC con más de 3.800 registros. Modelos predictivos con Prophet y ARIMA, pipeline en Python y dashboard ejecutivo en Power BI.</p>
+        <p class="project-desc" data-i18n="p_tfm_desc">Data Lake Bronze/Silver/Gold que cruza importaciones y exportaciones de la CNMC (3.906 registros, 14 productos, 2003–2026) para medir la dependencia energética de España. Incluye predicción hasta 2030 con Prophet, detección automática de anomalías y análisis del impacto de la crisis de 2008, la COVID-19 y la crisis energética de 2022.</p>
+        <p class="project-impact" data-i18n="p_tfm_impact">💼 Convierte datos públicos dispersos en conocimiento accionable: revela que España redujo un 71 % su dependencia neta desde 2003 gracias al crecimiento exportador, y proyecta su evolución hasta 2030.</p>
         <div class="project-tags">
-          <span class="tag t-blue">Python</span><span class="tag t-blue">AWS S3</span><span class="tag">Power BI</span><span class="tag">Prophet</span><span class="tag">ARIMA</span><span class="tag t-purple">Data Lake</span><span class="tag t-green">Big Data</span>
+          <span class="tag t-blue">Python</span><span class="tag">Pandas</span><span class="tag">Prophet</span><span class="tag t-blue">Streamlit</span><span class="tag">Plotly</span><span class="tag t-purple">Data Lake</span><span class="tag t-green">Big Data</span>
         </div>
+        <div class="project-links"><a href="https://github.com/santyherrera12/tfm-petroleo-balanza" target="_blank" class="gh-link">↗ GitHub</a></div>
       </div>
 
       <div class="project-card">
@@ -640,8 +642,9 @@ const i18n = {
     stack_title: "técnico", stack_db: "Bases de datos & Cloud", stack_infra: "Infraestructura & DevOps", stack_viz: "Visualización",
     projects_title: "Proyectos destacados",
     status_wip: "En progreso", status_done: "Completado",
-    p_tfm_title: "Plataforma Analítica de Importaciones Petroleras — TFM",
-    p_tfm_desc: "Arquitectura on-premise Bronze/Silver/Gold Data Lake para análisis de importaciones de petróleo en España (2003–2025). Dataset CNMC con más de 3.800 registros. Modelos predictivos con Prophet y ARIMA.",
+    p_tfm_title: "Plataforma de Análisis y Predicción de la Balanza Petrolífera — TFM",
+    p_tfm_desc: "Data Lake Bronze/Silver/Gold que cruza importaciones y exportaciones de la CNMC (3.906 registros, 14 productos, 2003–2026) para medir la dependencia energética de España. Incluye predicción hasta 2030 con Prophet, detección automática de anomalías y análisis del impacto de la crisis de 2008, la COVID-19 y la crisis energética de 2022.",
+    p_tfm_impact: "💼 Convierte datos públicos dispersos en conocimiento accionable: revela que España redujo un 71 % su dependencia neta desde 2003 gracias al crecimiento exportador, y proyecta su evolución hasta 2030.",
     p_etl_title: "ETL Pipeline con Python — Datos del Clima",
     p_etl_desc: "Pipeline ETL modular que extrae datos del clima en tiempo real desde OpenWeatherMap, transforma con Pandas y carga en CSV histórico. Arquitectura separada en Extract, Transform y Load.",
     p_etl_impact: "💼 Automatiza la recolección de datos que manualmente tomaría horas — base de cualquier sistema de monitoreo en producción.",
@@ -705,8 +708,9 @@ const i18n = {
     stack_title: "stack", stack_db: "Databases & Cloud", stack_infra: "Infrastructure & DevOps", stack_viz: "Visualization",
     projects_title: "Featured projects",
     status_wip: "In progress", status_done: "Completed",
-    p_tfm_title: "Petroleum Imports Analytics Platform — Master's Thesis",
-    p_tfm_desc: "On-premise Bronze/Silver/Gold Data Lake architecture for petroleum import analysis in Spain (2003–2025). CNMC dataset with over 3,800 records. Predictive models with Prophet and ARIMA.",
+    p_tfm_title: "Petroleum Trade Balance Analytics & Forecasting Platform — Master's Thesis",
+    p_tfm_desc: "Bronze/Silver/Gold Data Lake cross-referencing CNMC import and export data (3,906 records, 14 products, 2003–2026) to measure Spain's energy dependency. Includes forecasting to 2030 with Prophet, automatic anomaly detection and impact analysis of the 2008 crisis, COVID-19 and the 2022 energy crisis.",
+    p_tfm_impact: "💼 Turns scattered public data into actionable insight: reveals that Spain cut its net dependency by 71% since 2003 through export growth, and projects its evolution to 2030.",
     p_etl_title: "ETL Pipeline with Python — Weather Data",
     p_etl_desc: "Modular ETL pipeline that extracts real-time weather data from OpenWeatherMap, transforms with Pandas and loads into historical CSV. Architecture split into Extract, Transform and Load.",
     p_etl_impact: "💼 Automates data collection that would manually take hours — foundation of any production monitoring system.",
@@ -770,8 +774,9 @@ const i18n = {
     stack_title: "técnico", stack_db: "Bases de dados & Cloud", stack_infra: "Infraestrutura & DevOps", stack_viz: "Visualização",
     projects_title: "Projetos em destaque",
     status_wip: "Em progresso", status_done: "Concluído",
-    p_tfm_title: "Plataforma Analítica de Importações Petrolíferas — TFM",
-    p_tfm_desc: "Arquitetura on-premise Bronze/Silver/Gold Data Lake para análise de importações de petróleo em Espanha (2003–2025). Dataset CNMC com mais de 3.800 registos. Modelos preditivos com Prophet e ARIMA.",
+    p_tfm_title: "Plataforma de Análise e Previsão da Balança Petrolífera — TFM",
+    p_tfm_desc: "Data Lake Bronze/Silver/Gold que cruza importações e exportações da CNMC (3.906 registos, 14 produtos, 2003–2026) para medir a dependência energética de Espanha. Inclui previsão até 2030 com Prophet, deteção automática de anomalias e análise do impacto da crise de 2008, da COVID-19 e da crise energética de 2022.",
+    p_tfm_impact: "💼 Transforma dados públicos dispersos em conhecimento acionável: revela que Espanha reduziu 71 % a sua dependência líquida desde 2003 graças ao crescimento exportador, e projeta a sua evolução até 2030.",
     p_etl_title: "ETL Pipeline com Python — Dados Meteorológicos",
     p_etl_desc: "Pipeline ETL modular que extrai dados meteorológicos em tempo real do OpenWeatherMap, transforma com Pandas e carrega em CSV histórico. Arquitetura separada em Extract, Transform e Load.",
     p_etl_impact: "💼 Automatiza a recolha de dados que manualmente demoraria horas — base de qualquer sistema de monitorização em produção.",
